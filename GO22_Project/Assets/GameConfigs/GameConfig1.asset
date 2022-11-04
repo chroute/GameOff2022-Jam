@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082f38d510245de9fb2eccf98daa14d9, type: 3}
   m_Name: GameConfig1
   m_EditorClassIdentifier: 
-  BackgroundImage: {fileID: 21300000, guid: 25096ce515c063c48a2bd6b108c95912, type: 3}
-  Cliche: 
+  BackgroundImage: {fileID: 21300000, guid: dd1b2fd759c557818a3e4a1b162bb166, type: 3}
+  ClicheHead: Kill two birds with
+  ClicheTail: one stone
   Instruction: 
+  characters: []
