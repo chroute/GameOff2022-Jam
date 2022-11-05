@@ -16,5 +16,18 @@ namespace GO22
         {
             rb.velocity = new Vector2(Speed, rb.velocity.y);
         }
+
+        void LateUpdate()
+        {
+            if (transform.position.x < CamLimitCoordinate.Instance.MinX ||
+                transform.position.x > CamLimitCoordinate.Instance.MaxX)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) {
+            Destroy(this.gameObject);
+        }
     }
 }

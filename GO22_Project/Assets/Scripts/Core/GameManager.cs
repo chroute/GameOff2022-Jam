@@ -20,7 +20,7 @@ namespace GO22
         private float gameEndingDuration = 2f;
 
         // Singleton instance of GameManager
-        public static GameManager Instance { get; set; }
+        public static GameManager Instance { get; private set; }
         // Player win event that other classes can subscribe to do something (ex: show happy face) when player wins
         public static event EventHandler playerWinEvent;
 
@@ -36,6 +36,7 @@ namespace GO22
         public void Win()
         {
             win = true;
+            score++;
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
 

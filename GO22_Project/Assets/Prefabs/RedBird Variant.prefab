@@ -9,6 +9,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 866898221251350360, guid: 812022f96703680bc8755693c5388d77, type: 3}
       propertyPath: m_Name
+      value: RedBird Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 866898221251350360, guid: 812022f96703680bc8755693c5388d77, type: 3}
+      propertyPath: m_TagString
       value: RedBird
       objectReference: {fileID: 0}
     - target: {fileID: 866898221251350362, guid: 812022f96703680bc8755693c5388d77, type: 3}
