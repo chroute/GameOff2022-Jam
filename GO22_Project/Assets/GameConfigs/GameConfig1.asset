@@ -16,4 +16,7 @@ MonoBehaviour:
   ClicheHead: Kill two birds with
   ClicheTail: one stone
   Instruction: 
-  characters: []
+  characters:
+  - gameObject: {fileID: 2097462713350167152, guid: 75b1e08c641ffa3ee8880c974d9f53bf, type: 3}
+    x: 0
+    y: 0

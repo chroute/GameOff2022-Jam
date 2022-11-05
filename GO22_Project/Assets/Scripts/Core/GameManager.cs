@@ -33,7 +33,8 @@ namespace GO22
         private int score;
         private int life;
 
-        public void Win() {
+        public void Win()
+        {
             win = true;
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
@@ -60,7 +61,8 @@ namespace GO22
 
         void LoadGame()
         {
-            if (gameConfigs.Count == 0) {
+            if (gameConfigs.Count == 0)
+            {
                 return;
             }
 
@@ -69,13 +71,16 @@ namespace GO22
             GameConfig currentGame = gameConfigs[currentGameIndex];
             backgroundImage.sprite = currentGame.BackgroundImage;
             clicheText.text = $"{currentGame.ClicheHead}...";
-            currentGame.characters.ForEach(go => charactersInGame.Add(Instantiate(go)));
+            currentGame.characters.ForEach(go => charactersInGame.Add(
+                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
         }
 
-        void GameEnding() {
+        void GameEnding()
+        {
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheText.text = $"{currentGame.ClicheHead} {currentGame.ClicheTail}";
-            if (!win) {
+            if (!win)
+            {
                 // TODO: character sad face
             }
         }
@@ -85,8 +90,10 @@ namespace GO22
             charactersInGame.ForEach(go => Destroy(go));
         }
 
-        IEnumerator StartGamePlay() {
-            while (true) {
+        IEnumerator StartGamePlay()
+        {
+            while (true)
+            {
                 UnloadGame();
                 LoadGame();
                 yield return new WaitForSeconds(gameDuration);
@@ -95,8 +102,10 @@ namespace GO22
             }
         }
 
-        int chooseNextGameIndex() {
-            return UnityEngine.Random.Range(0, gameConfigs.Count);
+        int chooseNextGameIndex()
+        {
+            return 0;
+            // return UnityEngine.Random.Range(0, gameConfigs.Count);
         }
     }
 }
