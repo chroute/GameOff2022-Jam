@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GO22
 {
-    public class BirdMovement : MonoBehaviour
+    public class BirdMovement : DestroyAfterGame
     {
         public float Speed { get; set; }
         private Rigidbody2D rb;

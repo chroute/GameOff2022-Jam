@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GO22
 {
-    public class BirdSpawner : MonoBehaviour
+    public class BirdSpawner : DestroyAfterGame
     {
         [SerializeField]
         private GameObject leftBird;

@@ -23,12 +23,11 @@ namespace GO22
         public static GameManager Instance { get; private set; }
         // Player win event that other classes can subscribe to do something (ex: show happy face) when player wins
         public static event EventHandler playerWinEvent;
+        public static event EventHandler changeGameEvent;
 
         private Image backgroundImage;
         private Text clicheText;
         private int currentGameIndex = 0;
-        // Game object instantiated for current game. Need to be destroyed at the end of each game
-        private List<GameObject> charactersInGame = new List<GameObject>();
         private bool win;
         private int score;
         private int life;
@@ -72,8 +71,8 @@ namespace GO22
             GameConfig currentGame = gameConfigs[currentGameIndex];
             backgroundImage.sprite = currentGame.BackgroundImage;
             clicheText.text = $"{currentGame.ClicheHead}...";
-            currentGame.characters.ForEach(go => charactersInGame.Add(
-                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
+            currentGame.characters.ForEach(go => 
+                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity));
         }
 
         void GameEnding()
@@ -88,7 +87,7 @@ namespace GO22
 
         void UnloadGame()
         {
-            charactersInGame.ForEach(go => Destroy(go));
+            changeGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
         IEnumerator StartGamePlay()
@@ -105,8 +104,8 @@ namespace GO22
 
         int chooseNextGameIndex()
         {
-            return 0;
-            // return UnityEngine.Random.Range(0, gameConfigs.Count);
+            // return 0;
+            return UnityEngine.Random.Range(0, gameConfigs.Count);
         }
     }
 }

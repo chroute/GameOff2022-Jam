@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace GO22
 {
-    public class StoneMovement : MonoBehaviour
+    public class StoneMovement : DestroyAfterGame
     {
         private const string BLUE_BIRD = "BlueBird";
         private const string RED_BIRD = "RedBird";
