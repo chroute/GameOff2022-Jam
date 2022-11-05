@@ -20,21 +20,22 @@ namespace GO22
         private float gameEndingDuration = 2f;
 
         // Singleton instance of GameManager
-        public static GameManager Instance { get; set; }
+        public static GameManager Instance { get; private set; }
         // Player win event that other classes can subscribe to do something (ex: show happy face) when player wins
         public static event EventHandler playerWinEvent;
+        public static event EventHandler changeGameEvent;
 
         private Image backgroundImage;
         private Text clicheText;
         private int currentGameIndex = 0;
-        // Game object instantiated for current game. Need to be destroyed at the end of each game
-        private List<GameObject> charactersInGame = new List<GameObject>();
         private bool win;
         private int score;
         private int life;
 
-        public void Win() {
+        public void Win()
+        {
             win = true;
+            score++;
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -60,7 +61,8 @@ namespace GO22
 
         void LoadGame()
         {
-            if (gameConfigs.Count == 0) {
+            if (gameConfigs.Count == 0)
+            {
                 return;
             }
 
@@ -69,24 +71,29 @@ namespace GO22
             GameConfig currentGame = gameConfigs[currentGameIndex];
             backgroundImage.sprite = currentGame.BackgroundImage;
             clicheText.text = $"{currentGame.ClicheHead}...";
-            currentGame.characters.ForEach(go => charactersInGame.Add(Instantiate(go)));
+            currentGame.characters.ForEach(go => 
+                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity));
         }
 
-        void GameEnding() {
+        void GameEnding()
+        {
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheText.text = $"{currentGame.ClicheHead} {currentGame.ClicheTail}";
-            if (!win) {
+            if (!win)
+            {
                 // TODO: character sad face
             }
         }
 
         void UnloadGame()
         {
-            charactersInGame.ForEach(go => Destroy(go));
+            changeGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
-        IEnumerator StartGamePlay() {
-            while (true) {
+        IEnumerator StartGamePlay()
+        {
+            while (true)
+            {
                 UnloadGame();
                 LoadGame();
                 yield return new WaitForSeconds(gameDuration);
@@ -95,7 +102,9 @@ namespace GO22
             }
         }
 
-        int chooseNextGameIndex() {
+        int chooseNextGameIndex()
+        {
+            // return 0;
             return UnityEngine.Random.Range(0, gameConfigs.Count);
         }
     }
