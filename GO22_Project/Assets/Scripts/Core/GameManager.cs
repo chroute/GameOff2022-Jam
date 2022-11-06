@@ -14,7 +14,9 @@ namespace GO22
         [SerializeField]
         private GameObject background;
         [SerializeField]
-        private GameObject cliche;
+        private GameObject clicheHead;
+        [SerializeField]
+        private GameObject clicheTail;
         [SerializeField]
         private float gameDuration = 5f;
         [SerializeField]
@@ -27,7 +29,8 @@ namespace GO22
         public static event EventHandler changeGameEvent;
 
         private SpriteRenderer backgroundImage;
-        private TMP_Text clicheText;
+        private TMP_Text clicheHeadText;
+        private TMP_Text clicheTailText;
         private int currentGameIndex = 0;
         private bool win;
         private int score;
@@ -56,7 +59,8 @@ namespace GO22
         void Start()
         {
             backgroundImage = background.GetComponent<SpriteRenderer>();
-            clicheText = cliche.GetComponent<TMP_Text>();
+            clicheHeadText = clicheHead.GetComponent<TMP_Text>();
+            clicheTailText = clicheTail.GetComponent<TMP_Text>();
             StartCoroutine(StartGamePlay());
         }
 
@@ -71,7 +75,8 @@ namespace GO22
             win = false;
             GameConfig currentGame = gameConfigs[currentGameIndex];
             backgroundImage.sprite = currentGame.BackgroundImage;
-            clicheText.text = $"{currentGame.ClicheHead}...";
+            clicheHeadText.text = $"{currentGame.ClicheHead}...";
+            clicheTailText.text = "";
             currentGame.characters.ForEach(go => 
                 Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity));
         }
@@ -79,7 +84,7 @@ namespace GO22
         void GameEnding()
         {
             GameConfig currentGame = gameConfigs[currentGameIndex];
-            clicheText.text = $"{currentGame.ClicheHead} {currentGame.ClicheTail}";
+            clicheTailText.text = $"{currentGame.ClicheTail}";
             if (!win)
             {
                 // TODO: character sad face
