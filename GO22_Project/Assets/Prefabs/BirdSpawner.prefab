@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftBird: {fileID: 8589630854985948637, guid: d6d295e1204b58ef9a5918c5cbce6c09, type: 3}
-  leftBirdPos: {x: -9, y: 1}
+  leftBirdPos: {x: -4.5, y: 0.5}
   rightBird: {fileID: 866898221251350360, guid: 812022f96703680bc8755693c5388d77, type: 3}
-  rightBirdPos: {x: 9, y: 2}
+  rightBirdPos: {x: 4.5, y: 2}
   maxBirdSpeed: 5
   minBirdSpeed: 1

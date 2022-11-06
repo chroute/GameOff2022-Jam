@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; // Namespace for TextMeshPro
 
 namespace GO22
 {
@@ -25,8 +26,8 @@ namespace GO22
         public static event EventHandler playerWinEvent;
         public static event EventHandler changeGameEvent;
 
-        private Image backgroundImage;
-        private Text clicheText;
+        private SpriteRenderer backgroundImage;
+        private TMP_Text clicheText;
         private int currentGameIndex = 0;
         private bool win;
         private int score;
@@ -54,8 +55,8 @@ namespace GO22
 
         void Start()
         {
-            backgroundImage = background.GetComponent<Image>();
-            clicheText = cliche.GetComponent<Text>();
+            backgroundImage = background.GetComponent<SpriteRenderer>();
+            clicheText = cliche.GetComponent<TMP_Text>();
             StartCoroutine(StartGamePlay());
         }
 
