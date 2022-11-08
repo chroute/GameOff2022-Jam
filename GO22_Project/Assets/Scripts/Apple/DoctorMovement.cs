@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GO22
 {
@@ -7,25 +8,28 @@ namespace GO22
         [SerializeField]
         private float force = 45;
         private Rigidbody2D body;
-        private Collider2D col;
+        private bool shouldPush;
 
         void Awake()
         {
             body = GetComponent<Rigidbody2D>();
-            col = GetComponent<Collider2D>();
+            shouldPush = true;
         }
 
         void FixedUpdate()
         {
-            body.AddForce(new Vector2(force, 0), ForceMode2D.Force);
+            if (shouldPush) {
+                body.AddForce(new Vector2(force, 0), ForceMode2D.Force);
+            }
         }
 
         void LateUpdate()
         {
-            if (!col.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            if (transform.position.x < -PlatformWidth.Instance.Width / 2)
             {
-                Debug.Log("Win");
                 GameManager.Instance?.Win();
+                body.velocity = new Vector2(0, 0);
+                shouldPush = false;
             }
         }
     }

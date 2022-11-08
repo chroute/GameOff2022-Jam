@@ -21,13 +21,16 @@ namespace GO22
 
         private float spawnInterval = 2f;
         private Stack<GameObject> spawnedBirds = new Stack<GameObject>();
+        private IEnumerator coroutine;
 
         void Start()
         {
-            StartCoroutine(SpawnBirds());
+            coroutine = SpawnBirds();
+            StartCoroutine(coroutine);
         }
 
         void OnDisable() {
+            StopCoroutine(coroutine);
             while (spawnedBirds.Count > 0) {
                 Destroy(spawnedBirds.Pop());
             }

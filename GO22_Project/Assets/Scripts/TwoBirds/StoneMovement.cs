@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,8 @@ namespace GO22
         private Vector3 originalPos = new Vector3(0, -5, 0);
 
         private Rigidbody2D body;
+        private PlayerInput playerInput;
+
         private Vector2 input;
 
         private bool thrown;
@@ -24,10 +27,19 @@ namespace GO22
         void Awake()
         {
             body = GetComponent<Rigidbody2D>();
+            playerInput = GetComponent<PlayerInput>();
         }
 
         void Start() {
             reset();    
+        }
+
+        void OnEnable() {
+            GameManager.playerLoseEvent += OnLose;    
+        }
+
+        void OnDisable() {
+            GameManager.playerLoseEvent -= OnLose;    
         }
 
         void OnMove(InputValue inputValue)
@@ -85,8 +97,8 @@ namespace GO22
 
             if (birdHit == BirdHit.All)
             {
-                Debug.Log("win");
                 GameManager.Instance?.Win();
+                DisableInput();
             }
         }
 
@@ -96,6 +108,14 @@ namespace GO22
             body.velocity = new Vector2(0, 0);
             birdHit = BirdHit.None;
             transform.position = originalPos;
+        }
+
+        void OnLose(object sender, EventArgs eventArgs) {
+            DisableInput();
+        }
+
+        void DisableInput() {
+            playerInput.currentActionMap.Disable();
         }
     }
 

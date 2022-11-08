@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackgroundImage: {fileID: 21300000, guid: d379c832cb2100d4c9484cec3c1630cc, type: 3}
   ClicheHead: An apple a day
-  ClicheTail: ', keep the doctor away'
+  ClicheTail: keep the doctor away
   Instruction: 
   characters:
   - gameObject: {fileID: 4789459737976461947, guid: 70fb21077e46053989cf784ff368eb6e, type: 3}

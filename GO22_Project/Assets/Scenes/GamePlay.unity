@@ -994,7 +994,9 @@ MonoBehaviour:
   clicheHead: {fileID: 1761699733}
   clicheTail: {fileID: 829429668}
   gameDuration: 5
-  gameEndingDuration: 2
+  gameResultDuration: 1
+  transitionDuration: 2
+  forceGameIndex: -1
 --- !u!4 &1679616487
 Transform:
   m_ObjectHideFlags: 0
