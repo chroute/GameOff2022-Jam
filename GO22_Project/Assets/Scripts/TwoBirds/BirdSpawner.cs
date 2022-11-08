@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
 namespace GO22
 {
-    public class BirdSpawner : DestroyAfterGame
+    public class BirdSpawner : MonoBehaviour
     {
         [SerializeField]
         private GameObject leftBird;
@@ -19,10 +20,20 @@ namespace GO22
         private float minBirdSpeed;
 
         private float spawnInterval = 2f;
+        private Stack<GameObject> spawnedBirds = new Stack<GameObject>();
+        private IEnumerator coroutine;
 
         void Start()
         {
-            StartCoroutine(SpawnBirds());
+            coroutine = SpawnBirds();
+            StartCoroutine(coroutine);
+        }
+
+        void OnDisable() {
+            StopCoroutine(coroutine);
+            while (spawnedBirds.Count > 0) {
+                Destroy(spawnedBirds.Pop());
+            }
         }
 
         void NewBirds()
@@ -31,6 +42,8 @@ namespace GO22
             lb.GetComponent<BirdMovement>().Speed = Random.Range(minBirdSpeed, maxBirdSpeed);
             GameObject rb = Instantiate(rightBird, new Vector3(rightBirdPos.x, rightBirdPos.y, 0), Quaternion.identity);
             rb.GetComponent<BirdMovement>().Speed = -Random.Range(minBirdSpeed, maxBirdSpeed);
+            spawnedBirds.Push(lb);
+            spawnedBirds.Push(rb);
         }
 
         IEnumerator SpawnBirds()

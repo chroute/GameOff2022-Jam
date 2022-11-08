@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082f38d510245de9fb2eccf98daa14d9, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  BackgroundImage: {fileID: 21300000, guid: 1b75a1ecc38eaf029a5da5a60d9c06a4, type: 3}
+  BackgroundImage: {fileID: 21300000, guid: d379c832cb2100d4c9484cec3c1630cc, type: 3}
   ClicheHead: An apple a day
-  ClicheTail: ', keep the doctor away'
+  ClicheTail: keep the doctor away
   Instruction: 
-  characters: []
+  characters:
+  - gameObject: {fileID: 4789459737976461947, guid: 70fb21077e46053989cf784ff368eb6e, type: 3}
+    x: 0.5
+    y: -2
+  - gameObject: {fileID: 2426607180170445514, guid: d442b86830600579cb2671634dffff8c, type: 3}
+    x: -0.5
+    y: -2
+  - gameObject: {fileID: 128041618173021958, guid: 25bf8448d62706eb482ba31eb8621633, type: 3}
+    x: 0
+    y: -4

@@ -385,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484994865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0105, y: -0.0495, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1.2429806, y: 1.2485033, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -991,9 +991,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a0dc98f83f7def0eb826ca17c1a0314, type: 2}
   - {fileID: 11400000, guid: cb23e0aa4e757f14690e3cc71fdbe000, type: 2}
   background: {fileID: 484994865}
-  cliche: {fileID: 1761699733}
+  clicheHead: {fileID: 1761699733}
+  clicheTail: {fileID: 829429668}
   gameDuration: 5
-  gameEndingDuration: 2
+  gameResultDuration: 1
+  transitionDuration: 2
+  forceGameIndex: -1
 --- !u!4 &1679616487
 Transform:
   m_ObjectHideFlags: 0

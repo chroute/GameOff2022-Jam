@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro; // Namespace for TextMeshPro
 
 namespace GO22
@@ -20,27 +20,46 @@ namespace GO22
         [SerializeField]
         private float gameDuration = 5f;
         [SerializeField]
-        private float gameEndingDuration = 2f;
+        private float gameResultDuration = 1f;
+        [SerializeField]
+        private float transitionDuration = 2f;
+        [SerializeField]
+        private int forceGameIndex = -1;
 
         // Singleton instance of GameManager
         public static GameManager Instance { get; private set; }
         // Player win event that other classes can subscribe to do something (ex: show happy face) when player wins
         public static event EventHandler playerWinEvent;
+        public static event EventHandler playerLoseEvent;
+
         public static event EventHandler changeGameEvent;
 
         private SpriteRenderer backgroundImage;
         private TMP_Text clicheHeadText;
         private TMP_Text clicheTailText;
+        // Game object instantiated for current game. Need to be destroyed at the end of each game
+        private Stack<GameObject> charactersInGame = new Stack<GameObject>();
         private int currentGameIndex = 0;
-        private bool win;
+        private GameResult gameResult;
         private int score;
         private int life;
 
         public void Win()
         {
-            win = true;
+            gameResult = GameResult.WIN;
             score++;
+            GameConfig currentGame = gameConfigs[currentGameIndex];
+            clicheHeadText.text = currentGame.ClicheHead;
+            clicheTailText.text = currentGame.ClicheTail;
             playerWinEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+
+        public void Lose() {
+            gameResult = GameResult.LOSE;
+            GameConfig currentGame = gameConfigs[currentGameIndex];
+            clicheTailText.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail,"?");
+            playerLoseEvent?.Invoke(this, EventArgs.Empty);
         }
 
         void Awake()
@@ -72,27 +91,27 @@ namespace GO22
             }
 
             currentGameIndex = chooseNextGameIndex();
-            win = false;
+            gameResult = GameResult.PRESTINE;
             GameConfig currentGame = gameConfigs[currentGameIndex];
             backgroundImage.sprite = currentGame.BackgroundImage;
             clicheHeadText.text = $"{currentGame.ClicheHead}...";
             clicheTailText.text = "";
-            currentGame.characters.ForEach(go => 
-                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity));
+            currentGame.characters.ForEach(go => charactersInGame.Push(
+                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
         }
 
-        void GameEnding()
+        void Transition()
         {
-            GameConfig currentGame = gameConfigs[currentGameIndex];
-            clicheTailText.text = $"{currentGame.ClicheTail}";
-            if (!win)
-            {
-                // TODO: character sad face
-            }
         }
 
         void UnloadGame()
         {
+            while (charactersInGame.Count > 0) {
+                Destroy(charactersInGame.Pop());
+            }
+            backgroundImage.sprite = null;
+            clicheHeadText.text = "";
+            clicheTailText.text = "";
             changeGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -100,18 +119,30 @@ namespace GO22
         {
             while (true)
             {
-                UnloadGame();
                 LoadGame();
                 yield return new WaitForSeconds(gameDuration);
-                GameEnding();
-                yield return new WaitForSeconds(gameEndingDuration);
+                if (gameResult == GameResult.PRESTINE) {
+                    Lose();
+                    yield return new WaitForSeconds(gameResultDuration);
+                }
+                UnloadGame();
+                Transition();
+                yield return new WaitForSeconds(transitionDuration);
             }
         }
 
         int chooseNextGameIndex()
         {
-            // return 0;
+            if (forceGameIndex >= 0) {
+                return forceGameIndex;
+            }
             return UnityEngine.Random.Range(0, gameConfigs.Count);
         }
+    }
+
+    public enum GameResult {
+        PRESTINE,
+        WIN,
+        LOSE
     }
 }
