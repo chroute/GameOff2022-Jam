@@ -31,6 +31,8 @@ namespace GO22
         private SpriteRenderer backgroundImage;
         private TMP_Text clicheHeadText;
         private TMP_Text clicheTailText;
+        // Game object instantiated for current game. Need to be destroyed at the end of each game
+        private Stack<GameObject> charactersInGame = new Stack<GameObject>();
         private int currentGameIndex = 0;
         private bool win;
         private int score;
@@ -77,8 +79,8 @@ namespace GO22
             backgroundImage.sprite = currentGame.BackgroundImage;
             clicheHeadText.text = $"{currentGame.ClicheHead}...";
             clicheTailText.text = "";
-            currentGame.characters.ForEach(go => 
-                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity));
+            currentGame.characters.ForEach(go => charactersInGame.Push(
+                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
         }
 
         void GameEnding()
@@ -93,6 +95,9 @@ namespace GO22
 
         void UnloadGame()
         {
+            while (charactersInGame.Count > 0) {
+                Destroy(charactersInGame.Pop());
+            }
             changeGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -110,7 +115,6 @@ namespace GO22
 
         int chooseNextGameIndex()
         {
-            // return 0;
             return UnityEngine.Random.Range(0, gameConfigs.Count);
         }
     }

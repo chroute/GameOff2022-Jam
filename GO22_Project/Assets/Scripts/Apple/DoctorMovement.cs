@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GO22
 {
-    public class DoctorMovement : DestroyAfterGame
+    public class DoctorMovement : MonoBehaviour
     {
         [SerializeField]
         private float force = 45;

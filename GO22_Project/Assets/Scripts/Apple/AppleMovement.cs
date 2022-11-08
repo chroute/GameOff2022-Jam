@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace GO22
 {
-    public class AppleMovement : DestroyAfterGame
+    public class AppleMovement : MonoBehaviour
     {
         [SerializeField]
         private float force = 15;
