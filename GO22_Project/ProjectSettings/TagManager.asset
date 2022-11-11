@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BlueBird
   - RedBird
+  - Apple
+  - Doctor
   layers:
   - Default
   - TransparentFX
