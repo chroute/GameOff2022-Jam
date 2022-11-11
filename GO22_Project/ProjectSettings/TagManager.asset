@@ -8,6 +8,7 @@ TagManager:
   - RedBird
   - Apple
   - Doctor
+  - boundaries
   layers:
   - Default
   - TransparentFX
