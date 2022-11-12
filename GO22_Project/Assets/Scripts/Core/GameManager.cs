@@ -22,9 +22,10 @@ namespace GO22
         [SerializeField]
         private float gameResultDuration = 1f;
         [SerializeField]
-        private float transitionDuration = 2f;
+        private float transitionDuration = 0.5f;
         [SerializeField]
         private int forceGameIndex = -1;
+        [SerializeField] Animator transition;
 
         // Singleton instance of GameManager
         public static GameManager Instance { get; private set; }
@@ -100,8 +101,13 @@ namespace GO22
                 Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
         }
 
-        void Transition()
+        void TransitionIn()
         {
+            transition.SetBool("inTransition", true);
+        }
+        void TransitionOut()
+        {
+            transition.SetBool("inTransition", false);
         }
 
         void UnloadGame()
@@ -120,14 +126,15 @@ namespace GO22
             while (true)
             {
                 LoadGame();
+                TransitionOut();
                 yield return new WaitForSeconds(gameDuration);
                 if (gameResult == GameResult.PRESTINE) {
                     Lose();
                     yield return new WaitForSeconds(gameResultDuration);
                 }
-                UnloadGame();
-                Transition();
+                TransitionIn();
                 yield return new WaitForSeconds(transitionDuration);
+                UnloadGame();
             }
         }
 
