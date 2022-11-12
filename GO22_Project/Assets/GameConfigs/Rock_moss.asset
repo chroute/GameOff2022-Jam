@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082f38d510245de9fb2eccf98daa14d9, type: 3}
+  m_Name: Rock_moss
+  m_EditorClassIdentifier: 
+  BackgroundImage: {fileID: 21300000, guid: d379c832cb2100d4c9484cec3c1630cc, type: 3}
+  ClicheHead: A rolling stone
+  ClicheTail: gather no moss
+  Instruction: 
+  characters:
+  - gameObject: {fileID: 7738185085333691295, guid: a01baa5fe8dbcd24aa741e4763ea520f, type: 3}
+    x: 0
+    y: 0
+  - gameObject: {fileID: 2842556230180685139, guid: 9bb09c43cf7b120438f2868be1b84544, type: 3}
+    x: -3
+    y: 1.48
