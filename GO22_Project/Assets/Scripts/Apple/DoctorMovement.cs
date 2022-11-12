@@ -9,6 +9,8 @@ namespace GO22
         private float force = 50;
         private const string APPLE = "Apple";
         private const string IS_PUSHING = "isPushing";
+        private const string BOUNDARIES = "boundaries";
+
         private Rigidbody2D body;
         private Animator animator;
         private bool shouldMove;
@@ -48,19 +50,20 @@ namespace GO22
             }
         }
 
+        private void OnTriggerEnter2D(Collider2D other) 
+        {
+            if (other.gameObject.CompareTag(BOUNDARIES))
+            {
+                GameManager.Instance?.Win();
+            }
+
+        }
+
         void FixedUpdate()
         {
             if (shouldMove)
             {
                 body.AddForce(new Vector2(force, 0), ForceMode2D.Force);
-            }
-        }
-
-        void LateUpdate()
-        {
-            if (transform.position.x < -PlatformWidth.Instance.Width / 2)
-            {
-                GameManager.Instance?.Win();
             }
         }
 

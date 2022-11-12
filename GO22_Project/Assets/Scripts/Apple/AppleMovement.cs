@@ -14,6 +14,8 @@ namespace GO22
         private const string IS_MOVING = "isMoving";
         private const string IS_PUSHING = "isPushing";
         private const string DOCTOR = "Doctor";
+        private const string BOUNDARIES = "boundaries";
+
         private Rigidbody2D body;
         private Vector2 input;
         private PlayerInput playerInput;
@@ -88,12 +90,13 @@ namespace GO22
             }
         }
 
-        void LateUpdate()
+        private void OnTriggerEnter2D(Collider2D other) 
         {
-            if (transform.position.x > PlatformWidth.Instance.Width / 2)
+            if (other.gameObject.CompareTag(BOUNDARIES))
             {
                 GameManager.Instance?.Lose();
             }
+
         }
 
         void OnLose(object sender, EventArgs eventArgs)

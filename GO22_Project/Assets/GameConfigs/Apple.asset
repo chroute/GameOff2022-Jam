@@ -23,6 +23,6 @@ MonoBehaviour:
   - gameObject: {fileID: 2426607180170445514, guid: d442b86830600579cb2671634dffff8c, type: 3}
     x: -1.5
     y: -2
-  - gameObject: {fileID: 128041618173021958, guid: 25bf8448d62706eb482ba31eb8621633, type: 3}
+  - gameObject: {fileID: 2633856081882309051, guid: d2bb76cfb188fff45a1e4c6432d6cac3, type: 3}
     x: 0
-    y: -4
+    y: 0
