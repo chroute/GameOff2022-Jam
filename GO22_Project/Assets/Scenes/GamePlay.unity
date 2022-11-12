@@ -1077,11 +1077,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb9ae5fe5c0f56ccac9a89a65bf14cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDuration: 5
   gameConfigs:
   - {fileID: 11400000, guid: 7a0dc98f83f7def0eb826ca17c1a0314, type: 2}
   - {fileID: 11400000, guid: cb23e0aa4e757f14690e3cc71fdbe000, type: 2}
   - {fileID: 11400000, guid: 62258e5490e6bc746981edfacf2c0b6e, type: 2}
   - {fileID: 11400000, guid: 4a86328b7af8254bfa22d8b3c437f5c9, type: 2}
+  - {fileID: 11400000, guid: 8549bbe6ff0967cfdae26ae0637265e3, type: 2}
   background: {fileID: 484994866}
   clicheHead: {fileID: 1761699735}
   clicheTail: {fileID: 829429670}

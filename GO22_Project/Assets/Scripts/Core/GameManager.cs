@@ -9,6 +9,7 @@ namespace GO22
 {
     public class GameManager : MonoBehaviour
     {
+        public float gameDuration = 5f;
         [SerializeField]
         private List<GameConfig> gameConfigs;
         [SerializeField]
@@ -17,8 +18,6 @@ namespace GO22
         private TMP_Text clicheHead;
         [SerializeField]
         private TMP_Text clicheTail;
-        [SerializeField]
-        private float gameDuration = 5f;
         [SerializeField]
         private float gameResultDuration = 1f;
         [SerializeField]
