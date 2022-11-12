@@ -44,6 +44,10 @@ namespace GO22
 
         public void Win()
         {
+            if (gameResult != GameResult.PRESTINE) {
+                return;
+            }
+
             gameResult = GameResult.WIN;
             score++;
             GameConfig currentGame = gameConfigs[currentGameIndex];
@@ -52,9 +56,11 @@ namespace GO22
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
 
+        public void Lose() {
+            if (gameResult != GameResult.PRESTINE) {
+                return;
+            }
 
-        public void Lose()
-        {
             gameResult = GameResult.LOSE;
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheTail.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail, "?");
