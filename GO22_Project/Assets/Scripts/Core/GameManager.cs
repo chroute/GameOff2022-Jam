@@ -36,13 +36,19 @@ namespace GO22
         public static event EventHandler playerLoseEvent;
 
         public static event EventHandler changeGameEvent;
-
+        private GameObject mainCamera;
+        [SerializeField] public Vector3 cameraInitialPosition;
+        private SpriteRenderer backgroundImage;
+        private TMP_Text clicheHeadText;
+        private TMP_Text clicheTailText;
         // Game object instantiated for current game. Need to be destroyed at the end of each game
         private Stack<GameObject> charactersInGame = new Stack<GameObject>();
         private int currentGameIndex = 0;
         private GameResult gameResult;
         private int score;
         private int life;
+        private const string CAMERA = "MainCamera";
+
 
         public void Win()
         {
@@ -71,6 +77,7 @@ namespace GO22
 
         void Awake()
         {
+
             if (Instance != null && Instance != this)
             {
                 Destroy(this.gameObject);
@@ -80,6 +87,9 @@ namespace GO22
                 Instance = this;
                 DontDestroyOnLoad(this.gameObject);
             }
+            mainCamera = GameObject.FindGameObjectsWithTag(CAMERA)[0];
+            cameraInitialPosition = mainCamera.transform.position;
+
         }
 
         void Start()
@@ -101,7 +111,7 @@ namespace GO22
             clicheHead.text = $"{currentGame.ClicheHead}...";
             clicheTail.text = "";
             currentGame.characters.ForEach(go => charactersInGame.Push(
-                Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
+            Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
         }
 
         IEnumerator TransitionIn()
@@ -158,6 +168,11 @@ namespace GO22
                 yield return TransitionIn();
                 UnloadGame();
             }
+        }
+
+        private void ResetCamera()
+        {
+            mainCamera.transform.position = cameraInitialPosition;
         }
 
         int chooseNextGameIndex()

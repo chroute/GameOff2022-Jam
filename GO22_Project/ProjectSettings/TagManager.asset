@@ -9,6 +9,7 @@ TagManager:
   - Apple
   - Doctor
   - boundaries
+  - Rock
   layers:
   - Default
   - TransparentFX

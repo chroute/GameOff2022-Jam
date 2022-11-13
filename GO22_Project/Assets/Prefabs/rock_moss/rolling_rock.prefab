@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2842556230180685143}
   - component: {fileID: 2842556230180685136}
-  - component: {fileID: 2842556230180685137}
   - component: {fileID: 2842556230180685138}
-  - component: {fileID: 323779637}
+  - component: {fileID: 3285115461351848414}
+  - component: {fileID: 5190918027856584880}
+  - component: {fileID: 652869318}
   m_Layer: 0
   m_Name: rolling_rock
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,46 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2842556230180685137
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2842556230180685139}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.18904567, y: 0.4420743}
-      - {x: -0.2975788, y: 0.36227584}
-      - {x: -0.3742478, y: 0.24320734}
-      - {x: -0.4386325, y: 0.062749624}
-      - {x: -0.43668222, y: -0.1831882}
-      - {x: -0.37810993, y: -0.30472875}
-      - {x: -0.18594575, y: -0.4249987}
-      - {x: 0.061624527, y: -0.43874782}
-      - {x: 0.19021773, y: -0.3696841}
-      - {x: 0.376971, y: -0.30415535}
-      - {x: 0.44780707, y: -0.18792272}
-      - {x: 0.43682528, y: 0.1745317}
-      - {x: 0.3796022, y: 0.31205726}
-      - {x: 0.30938196, y: 0.37929022}
-      - {x: 0.18463731, y: 0.43662286}
 --- !u!50 &2842556230180685138
 Rigidbody2D:
   serializedVersion: 4
@@ -148,7 +109,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &323779637
+--- !u!95 &3285115461351848414
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -168,3 +129,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &5190918027856584880
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842556230180685139}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &652869318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842556230180685139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210cb9a052067e443be8e4f25d77f3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {x: 0, y: 0}
+  jumpForce: 2
+  isGrounded: 1
