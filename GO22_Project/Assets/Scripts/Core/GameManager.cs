@@ -12,20 +12,21 @@ namespace GO22
         [SerializeField]
         private List<GameConfig> gameConfigs;
         [SerializeField]
-        private GameObject background;
+        private SpriteRenderer background;
         [SerializeField]
-        private GameObject clicheHead;
+        private TMP_Text clicheHead;
         [SerializeField]
-        private GameObject clicheTail;
+        private TMP_Text clicheTail;
         [SerializeField]
         private float gameDuration = 5f;
         [SerializeField]
         private float gameResultDuration = 1f;
         [SerializeField]
-        private float transitionDuration = 0.5f;
+        private float transitionDuration = 2f;
         [SerializeField]
         private int forceGameIndex = -1;
-        [SerializeField] Animator transition;
+        [SerializeField]
+        private CanvasRenderer transitionImage;
 
         // Singleton instance of GameManager
         public static GameManager Instance { get; private set; }
@@ -35,9 +36,6 @@ namespace GO22
 
         public static event EventHandler changeGameEvent;
 
-        private SpriteRenderer backgroundImage;
-        private TMP_Text clicheHeadText;
-        private TMP_Text clicheTailText;
         // Game object instantiated for current game. Need to be destroyed at the end of each game
         private Stack<GameObject> charactersInGame = new Stack<GameObject>();
         private int currentGameIndex = 0;
@@ -50,16 +48,17 @@ namespace GO22
             gameResult = GameResult.WIN;
             score++;
             GameConfig currentGame = gameConfigs[currentGameIndex];
-            clicheHeadText.text = currentGame.ClicheHead;
-            clicheTailText.text = currentGame.ClicheTail;
+            clicheHead.text = currentGame.ClicheHead;
+            clicheTail.text = currentGame.ClicheTail;
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
 
 
-        public void Lose() {
+        public void Lose()
+        {
             gameResult = GameResult.LOSE;
             GameConfig currentGame = gameConfigs[currentGameIndex];
-            clicheTailText.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail,"?");
+            clicheTail.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail, "?");
             playerLoseEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -78,9 +77,6 @@ namespace GO22
 
         void Start()
         {
-            backgroundImage = background.GetComponent<SpriteRenderer>();
-            clicheHeadText = clicheHead.GetComponent<TMP_Text>();
-            clicheTailText = clicheTail.GetComponent<TMP_Text>();
             StartCoroutine(StartGamePlay());
         }
 
@@ -94,30 +90,43 @@ namespace GO22
             currentGameIndex = chooseNextGameIndex();
             gameResult = GameResult.PRESTINE;
             GameConfig currentGame = gameConfigs[currentGameIndex];
-            backgroundImage.sprite = currentGame.BackgroundImage;
-            clicheHeadText.text = $"{currentGame.ClicheHead}...";
-            clicheTailText.text = "";
+            background.sprite = currentGame.BackgroundImage;
+            clicheHead.text = $"{currentGame.ClicheHead}...";
+            clicheTail.text = "";
             currentGame.characters.ForEach(go => charactersInGame.Push(
                 Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
         }
 
-        void TransitionIn()
+        IEnumerator TransitionIn()
         {
-            transition.SetBool("inTransition", true);
+            return Transition(0, 1);
         }
-        void TransitionOut()
+        IEnumerator TransitionOut()
         {
-            transition.SetBool("inTransition", false);
+            return Transition(1, 0);
+        }
+
+        IEnumerator Transition(float startAlpha, float endAlpha)
+        {
+            float timeElapsed = 0;
+            while (timeElapsed < transitionDuration)
+            {
+                transitionImage.SetAlpha(Mathf.Lerp(startAlpha, endAlpha, timeElapsed / transitionDuration));
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+            transitionImage.SetAlpha(endAlpha);
         }
 
         void UnloadGame()
         {
-            while (charactersInGame.Count > 0) {
+            while (charactersInGame.Count > 0)
+            {
                 Destroy(charactersInGame.Pop());
             }
-            backgroundImage.sprite = null;
-            clicheHeadText.text = "";
-            clicheTailText.text = "";
+            background.sprite = null;
+            clicheHead.text = "";
+            clicheTail.text = "";
             changeGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -126,28 +135,30 @@ namespace GO22
             while (true)
             {
                 LoadGame();
-                TransitionOut();
+                yield return TransitionOut();
                 yield return new WaitForSeconds(gameDuration);
-                if (gameResult == GameResult.PRESTINE) {
+                if (gameResult == GameResult.PRESTINE)
+                {
                     Lose();
                     yield return new WaitForSeconds(gameResultDuration);
                 }
-                TransitionIn();
-                yield return new WaitForSeconds(transitionDuration);
+                yield return TransitionIn();
                 UnloadGame();
             }
         }
 
         int chooseNextGameIndex()
         {
-            if (forceGameIndex >= 0) {
+            if (forceGameIndex >= 0)
+            {
                 return forceGameIndex;
             }
             return UnityEngine.Random.Range(0, gameConfigs.Count);
         }
     }
 
-    public enum GameResult {
+    public enum GameResult
+    {
         PRESTINE,
         WIN,
         LOSE
