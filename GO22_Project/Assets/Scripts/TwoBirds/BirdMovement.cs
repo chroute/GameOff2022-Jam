@@ -23,9 +23,7 @@ namespace GO22
 
         void LateUpdate()
         {
-            if (transform.position.x < CamLimitCoordinate.Instance.MinX ||
-                transform.position.x > CamLimitCoordinate.Instance.MaxX ||
-                transform.position.y < CamLimitCoordinate.Instance.MinY)
+            if (CamLimitCoordinate.Instance.IsOutOfLimit(transform.position))
             {
                 Destroy(this.gameObject);
             }
