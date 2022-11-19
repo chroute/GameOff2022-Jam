@@ -36,8 +36,6 @@ namespace GO22
         public static event EventHandler playerLoseEvent;
 
         public static event EventHandler changeGameEvent;
-        private GameObject mainCamera;
-        [SerializeField] public Vector3 cameraInitialPosition;
         private SpriteRenderer backgroundImage;
         private TMP_Text clicheHeadText;
         private TMP_Text clicheTailText;
@@ -47,7 +45,6 @@ namespace GO22
         private GameResult gameResult;
         private int score;
         private int life;
-        private const string CAMERA = "MainCamera";
 
 
         public void Win()
@@ -87,8 +84,6 @@ namespace GO22
                 Instance = this;
                 DontDestroyOnLoad(this.gameObject);
             }
-            mainCamera = GameObject.FindGameObjectsWithTag(CAMERA)[0];
-            cameraInitialPosition = mainCamera.transform.position;
 
         }
 
@@ -168,11 +163,6 @@ namespace GO22
                 yield return TransitionIn();
                 UnloadGame();
             }
-        }
-
-        private void ResetCamera()
-        {
-            mainCamera.transform.position = cameraInitialPosition;
         }
 
         int chooseNextGameIndex()
