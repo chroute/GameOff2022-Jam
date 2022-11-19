@@ -51,6 +51,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2716055591007323608, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1852441566, guid: 83dcaf50814bf4341afa9dd636af7df9, type: 3}
+    - target: {fileID: 2716055591007323609, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
+      propertyPath: up
+      value: 
+      objectReference: {fileID: 21300000, guid: 03e9c98e8bc94774389e4e1a48ae47ad, type: 3}
+    - target: {fileID: 2716055591007323609, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
+      propertyPath: down
+      value: 
+      objectReference: {fileID: 21300000, guid: 19c94fe086465d04da515c5bd9433677, type: 3}
+    - target: {fileID: 2716055591007323609, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
+      propertyPath: idle
+      value: 
+      objectReference: {fileID: 1852441566, guid: 83dcaf50814bf4341afa9dd636af7df9, type: 3}
+    - target: {fileID: 2716055591007323609, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: -880281688, guid: f2c7671e92dd092499506949d778a62b, type: 3}
+    - target: {fileID: 2716055591007323609, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: -141783003, guid: f2c7671e92dd092499506949d778a62b, type: 3}
     - target: {fileID: 2716055591007323610, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
       propertyPath: m_Name
       value: MonkeyMimick

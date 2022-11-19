@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ad11c3584b30f62909f44bc1a743ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: {fileID: 265688815, guid: 90ee250c7aa06e64c8072a9dbc773174, type: 3}
-  left: {fileID: 785112671, guid: d4718b91199e84a4aa16b2ff8fd558f7, type: 3}
-  up: {fileID: -1475801124, guid: 80f22fbc41339c64590c73839bab23e2, type: 3}
-  right: {fileID: 1410464013, guid: 790919ebda12b724a83956d4bb827999, type: 3}
-  down: {fileID: 377984948, guid: 02b70b19bf032154694327093580bb49, type: 3}
+  idle: {fileID: -1702185372, guid: 455dd06fcd8316d4d89148ee2285aff5, type: 3}
+  left: {fileID: 956040152, guid: a6c8e6f615ff674498b3cbe1f8e656dd, type: 3}
+  up: {fileID: 21300000, guid: b2cf02751b6700a48860420e531c44e0, type: 3}
+  right: {fileID: 682940920, guid: a6c8e6f615ff674498b3cbe1f8e656dd, type: 3}
+  down: {fileID: 21300000, guid: bc3858d9dd999f546abe3a6d5269626a, type: 3}
 --- !u!212 &2716055591007323608
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 265688815, guid: 90ee250c7aa06e64c8072a9dbc773174, type: 3}
+  m_Sprite: {fileID: -1702185372, guid: 455dd06fcd8316d4d89148ee2285aff5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
