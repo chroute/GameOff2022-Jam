@@ -14,13 +14,17 @@ namespace GO22
 
         private Rigidbody2D body;
         private JuiceFiller bottleFiller;
+        private Animator animator;
         private Vector2 input;
+        private bool blenderBroken;
 
         void Start()
         {
             lemonCaught = 0;
+            blenderBroken = false;
             body = GetComponent<Rigidbody2D>();
             bottleFiller = GetComponentInChildren<JuiceFiller>();
+            animator = GetComponentInChildren<Animator>();
         }
 
         void FixedUpdate()
@@ -29,7 +33,8 @@ namespace GO22
 
         }
 
-        void LateUpdate() {
+        void LateUpdate()
+        {
             Vector3 clampedPos = transform.position;
             clampedPos.x = Mathf.Clamp(clampedPos.x, CamLimitCoordinate.Instance.MinX, CamLimitCoordinate.Instance.MaxX);
             transform.position = clampedPos;
@@ -42,15 +47,26 @@ namespace GO22
 
         void OnCollisionEnter2D(Collision2D other)
         {
+            if (blenderBroken)
+            {
+                return;
+            }
+
             if (other.gameObject.CompareTag(LEMON))
             {
                 Destroy(other.gameObject);
                 lemonCaught++;
                 bottleFiller?.FillBottle(targetLemon, lemonCaught);
-                if (lemonCaught == targetLemon) {
+                if (lemonCaught == targetLemon)
+                {
                     GameManager.Instance?.Win();
                 }
-            } else {
+            }
+            else
+            {
+                // TODO: make blender trip over
+                blenderBroken = true;
+                animator.enabled = false;
                 GameManager.Instance?.Lose();
             }
         }
