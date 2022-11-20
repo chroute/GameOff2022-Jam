@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935923160434144370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9980252, y: -0.975729, z: -0.011248025}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e0352e9888dedf492e766bc89a2477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemon: {fileID: 5356878605819599272, guid: 396d2ba4fb323912eace7d2935aed2f0, type: 3}
-  force: 2
+  lemon: {fileID: 8791699758846683986, guid: 573dc351221171fb4b82fed625d8e992, type: 3}
+  stone: {fileID: 5356878605819599272, guid: 396d2ba4fb323912eace7d2935aed2f0, type: 3}
+  force: 2.5
   spawnInterval: 0.5

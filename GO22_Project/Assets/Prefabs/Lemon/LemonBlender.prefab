@@ -142,8 +142,8 @@ GameObject:
   - component: {fileID: 2178371410542339290}
   - component: {fileID: 2178371410542339293}
   - component: {fileID: 1460194106}
-  - component: {fileID: 1460194105}
   - component: {fileID: 9025317985114424181}
+  - component: {fileID: -4960203547936845103}
   m_Layer: 0
   m_Name: LemonBlender
   m_TagString: Untagged
@@ -242,7 +242,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1460194105
+--- !u!114 &9025317985114424181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178371410542339292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10b87b56f59ff6808b7a68c641caff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  targetLemon: 5
+--- !u!114 &-4960203547936845103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,20 +286,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &9025317985114424181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178371410542339292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10b87b56f59ff6808b7a68c641caff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  targetLemon: 8
 --- !u!1 &2178371410898514008
 GameObject:
   m_ObjectHideFlags: 0

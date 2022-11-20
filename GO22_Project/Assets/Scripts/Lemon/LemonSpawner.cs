@@ -9,50 +9,60 @@ namespace GO22
         [SerializeField]
         private GameObject lemon;
         [SerializeField]
-        private float force = 2;
+        private GameObject stone;
         [SerializeField]
-        private float spawnInterval = 0.5f;
-        private IEnumerator coroutine;
+        private float force = 2.5f;
+        [SerializeField]
+        private int targetLemon = 5;
+        private float spawnInterval;
+        private IEnumerator lemonCoroutine;
+        private IEnumerator stoneCoroutine;
 
-        private Stack<GameObject> spawnedLemons = new Stack<GameObject>();
-        // Start is called before the first frame update
+        private Stack<GameObject> spawnedObjects = new Stack<GameObject>();
         void Start()
         {
-            coroutine = SpawnLemeons();
-            StartCoroutine(coroutine);
+            spawnInterval = (float) GameManager.Instance.gameDuration / (targetLemon + 3);
+            lemonCoroutine = SpawnLemons();
+            stoneCoroutine = SpawnStones();
+            StartCoroutine(lemonCoroutine);
+            StartCoroutine(stoneCoroutine);
         }
 
         void OnDisable()
         {
-            StopCoroutine(coroutine);
-            while (spawnedLemons.Count > 0)
+            StopCoroutine(lemonCoroutine);
+            StopCoroutine(stoneCoroutine);
+            while (spawnedObjects.Count > 0)
             {
-                Destroy(spawnedLemons.Pop());
+                Destroy(spawnedObjects.Pop());
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        IEnumerator SpawnLemeons()
+        IEnumerator SpawnLemons()
         {
             while (true)
             {
-                NewLemon();
+                SpawnNew(lemon);
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
 
-        void NewLemon()
+        IEnumerator SpawnStones()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(Random.Range(1f, 3f));
+                SpawnNew(stone);
+            }
+        }
+
+        void SpawnNew(GameObject objectToCreate)
         {
             float x = Random.Range(CamLimitCoordinate.Instance.MinX + 1, CamLimitCoordinate.Instance.MaxX - 1);
-            GameObject newLemon = Instantiate(lemon, new Vector3(x, CamLimitCoordinate.Instance.MaxY, 0), Quaternion.identity);
-            Rigidbody2D rb = newLemon.GetComponent<Rigidbody2D>();
+            GameObject newObject = Instantiate(objectToCreate, new Vector3(x, CamLimitCoordinate.Instance.MaxY, 0), Quaternion.identity);
+            Rigidbody2D rb = newObject.GetComponent<Rigidbody2D>();
             rb.AddForce(new Vector2(Random.Range(-force, force), 0), ForceMode2D.Impulse);
-            spawnedLemons.Push(newLemon);
+            spawnedObjects.Push(newObject);
         }
     }
 }
