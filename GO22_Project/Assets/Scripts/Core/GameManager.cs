@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro; // Namespace for TextMeshPro
 
 namespace GO22
@@ -25,7 +26,10 @@ namespace GO22
         [SerializeField]
         private int forceGameIndex = -1;
         [SerializeField]
-        private CanvasRenderer transitionImage;
+        private Image transitionImage;
+        [SerializeField]
+        private List<Texture> transitionTextures;
+        private Material transitionImageMaterial;
 
         // Singleton instance of GameManager
         public static GameManager Instance { get; private set; }
@@ -82,6 +86,7 @@ namespace GO22
 
         void Start()
         {
+            transitionImageMaterial = transitionImage.material;
             StartCoroutine(StartGamePlay());
         }
 
@@ -104,23 +109,30 @@ namespace GO22
 
         IEnumerator TransitionIn()
         {
-            return Transition(0, 1);
+            return Transition(1, 0);
         }
         IEnumerator TransitionOut()
         {
-            return Transition(1, 0);
+            return Transition(0, 1);
         }
 
         IEnumerator Transition(float startAlpha, float endAlpha)
         {
+            if (transitionTextures.Count == 0) {
+                yield break;
+            }
+
+            Texture texture = transitionTextures[UnityEngine.Random.Range(0, transitionTextures.Count)];
+            transitionImageMaterial.SetTexture("_InputTexture", texture);
             float timeElapsed = 0;
             while (timeElapsed < transitionDuration)
             {
-                transitionImage.SetAlpha(Mathf.Lerp(startAlpha, endAlpha, timeElapsed / transitionDuration));
+                float progress = Mathf.Lerp(startAlpha, endAlpha, timeElapsed / transitionDuration);
+                transitionImageMaterial.SetFloat("_Progress", progress);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
-            transitionImage.SetAlpha(endAlpha);
+                transitionImageMaterial.SetFloat("_Progress", 1);
         }
 
         void UnloadGame()
