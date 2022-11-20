@@ -13,8 +13,6 @@ namespace GO22
         [SerializeField]
         private List<GameConfig> gameConfigs;
         [SerializeField]
-        private SpriteRenderer background;
-        [SerializeField]
         private TMP_Text clicheHead;
         [SerializeField]
         private TMP_Text clicheTail;
@@ -95,11 +93,10 @@ namespace GO22
             currentGameIndex = chooseNextGameIndex();
             gameResult = GameResult.PRESTINE;
             GameConfig currentGame = gameConfigs[currentGameIndex];
-            background.sprite = currentGame.BackgroundImage;
             clicheHead.text = $"{currentGame.ClicheHead}...";
             clicheTail.text = "";
             currentGame.characters.ForEach(go => charactersInGame.Push(
-                Instantiate(go.gameObject, new Vector3(go.x, go.y, 0), Quaternion.identity)));
+                Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
         }
 
         IEnumerator TransitionIn()
@@ -129,7 +126,6 @@ namespace GO22
             {
                 Destroy(charactersInGame.Pop());
             }
-            background.sprite = null;
             clicheHead.text = "";
             clicheTail.text = "";
             changeGameEvent?.Invoke(this, EventArgs.Empty);
