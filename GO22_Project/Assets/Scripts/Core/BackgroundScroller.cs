@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GO22
 {
-    
-    public class backgroundScroller : MonoBehaviour
+
+    public class BackgroundScroller : MonoBehaviour
     {
-    [SerializeField] Vector2 moveSpeed;
-    Vector2 offset;
-    Material material;
+        [SerializeField] Vector2 moveSpeed;
+        Vector2 offset;
+        Material material;
 
         void Awake()
         {
@@ -20,7 +18,7 @@ namespace GO22
         void Update()
         {
             offset = moveSpeed * Time.deltaTime;
-            material.mainTextureOffset += offset;       
+            material.mainTextureOffset += offset;
         }
     }
 }
