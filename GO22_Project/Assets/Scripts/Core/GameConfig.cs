@@ -7,7 +7,6 @@ namespace GO22
     [CreateAssetMenu]
     public class GameConfig : ScriptableObject
     {
-        public Sprite BackgroundImage;
         public string ClicheHead;
         public string ClicheTail;
         public string Instruction;
@@ -20,5 +19,7 @@ namespace GO22
         public GameObject gameObject;
         public float x;
         public float y;
+        public float z;
+
     }
 }

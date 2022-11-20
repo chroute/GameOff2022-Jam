@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2716055591007323610
+--- !u!1 &5211779167390481549
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,56 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2716055591007323606}
-  - component: {fileID: 2716055591007323609}
-  - component: {fileID: 2716055591007323608}
-  - component: {fileID: 2716055591007323611}
+  - component: {fileID: 5296267525669998665}
+  - component: {fileID: 2402411711970518858}
+  - component: {fileID: 5132509934094131804}
   m_Layer: 0
-  m_Name: Monkey
+  m_Name: Background_Monkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2716055591007323606
+--- !u!4 &5296267525669998665
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716055591007323610}
+  m_GameObject: {fileID: 5211779167390481549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.09, y: -1.8597746, z: -0.0055680606}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1.2504712, y: 1.2490516, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2716055591007323609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716055591007323610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ad11c3584b30f62909f44bc1a743ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idle: {fileID: -1702185372, guid: 455dd06fcd8316d4d89148ee2285aff5, type: 3}
-  left: {fileID: 956040152, guid: a6c8e6f615ff674498b3cbe1f8e656dd, type: 3}
-  up: {fileID: 21300000, guid: b2cf02751b6700a48860420e531c44e0, type: 3}
-  right: {fileID: 682940920, guid: a6c8e6f615ff674498b3cbe1f8e656dd, type: 3}
-  down: {fileID: 21300000, guid: bc3858d9dd999f546abe3a6d5269626a, type: 3}
---- !u!212 &2716055591007323608
+--- !u!212 &2402411711970518858
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716055591007323610}
+  m_GameObject: {fileID: 5211779167390481549}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0f406b88b2f98304eacd089c1ab777df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,28 +74,27 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1702185372, guid: 455dd06fcd8316d4d89148ee2285aff5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 58d4a7aa2001c6d4a8617d7fb9a5f2ae, type: 3}
+  m_Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_DrawMode: 2
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2716055591007323611
+--- !u!114 &5132509934094131804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716055591007323610}
+  m_GameObject: {fileID: 5211779167390481549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ca979a4b1b4bce9812b824e0e6179b, type: 3}
+  m_Script: {fileID: 11500000, guid: 12984ff797fbd594baa567a277a3531b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfMoves: 5
-  mimickMonkey: {fileID: 4935897582125497418, guid: 1622a8a9ec20e0afe91c119b3a9e5475, type: 3}
+  moveSpeed: {x: 1, y: 1}
