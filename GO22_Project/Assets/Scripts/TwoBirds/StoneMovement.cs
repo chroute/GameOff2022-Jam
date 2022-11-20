@@ -60,6 +60,10 @@ namespace GO22
 
         void LateUpdate()
         {
+            Vector3 clampedPos = transform.position;
+            clampedPos.x = Mathf.Clamp(clampedPos.x, CamLimitCoordinate.Instance.MinX, CamLimitCoordinate.Instance.MaxX);
+            transform.position = clampedPos;
+
             if (transform.position.y > CamLimitCoordinate.Instance.MaxY)
             {
                 reset();
