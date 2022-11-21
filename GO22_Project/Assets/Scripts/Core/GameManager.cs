@@ -36,7 +36,9 @@ namespace GO22
         public static event EventHandler playerLoseEvent;
 
         public static event EventHandler changeGameEvent;
-
+        private SpriteRenderer backgroundImage;
+        private TMP_Text clicheHeadText;
+        private TMP_Text clicheTailText;
         // Game object instantiated for current game. Need to be destroyed at the end of each game
         private Stack<GameObject> charactersInGame = new Stack<GameObject>();
         private int currentGameIndex = 0;
@@ -44,9 +46,11 @@ namespace GO22
         private int score;
         private int life;
 
+
         public void Win()
         {
-            if (gameResult != GameResult.PRESTINE) {
+            if (gameResult != GameResult.PRESTINE)
+            {
                 return;
             }
 
@@ -58,8 +62,10 @@ namespace GO22
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
 
-        public void Lose() {
-            if (gameResult != GameResult.PRESTINE) {
+        public void Lose()
+        {
+            if (gameResult != GameResult.PRESTINE)
+            {
                 return;
             }
 
@@ -71,6 +77,7 @@ namespace GO22
 
         void Awake()
         {
+
             if (Instance != null && Instance != this)
             {
                 Destroy(this.gameObject);
@@ -80,6 +87,7 @@ namespace GO22
                 Instance = this;
                 DontDestroyOnLoad(this.gameObject);
             }
+
         }
 
         void Start()
@@ -101,7 +109,7 @@ namespace GO22
             clicheHead.text = $"{currentGame.ClicheHead}...";
             clicheTail.text = "";
             currentGame.characters.ForEach(go => charactersInGame.Push(
-                Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
+            Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
         }
 
         IEnumerator TransitionIn()
@@ -115,7 +123,8 @@ namespace GO22
 
         IEnumerator Transition(float startAlpha, float endAlpha)
         {
-            if (transitionTextures.Count == 0) {
+            if (transitionTextures.Count == 0)
+            {
                 yield break;
             }
 
@@ -129,7 +138,7 @@ namespace GO22
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
-                transitionImageMaterial.SetFloat("_Progress", 1);
+            transitionImageMaterial.SetFloat("_Progress", 1);
         }
 
         void UnloadGame()

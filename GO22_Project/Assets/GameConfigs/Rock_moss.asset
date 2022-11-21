@@ -17,9 +17,9 @@ MonoBehaviour:
   ClicheTail: gather no moss
   Instruction: 
   characters:
-  - gameObject: {fileID: 7738185085333691295, guid: a01baa5fe8dbcd24aa741e4763ea520f, type: 3}
+  - gameObject: {fileID: 7738185085333691295, guid: 732473f8086da7f40aea2c6afa4f6966, type: 3}
     x: 0
     y: 0
   - gameObject: {fileID: 2842556230180685139, guid: 9bb09c43cf7b120438f2868be1b84544, type: 3}
-    x: -3
-    y: 1.48
+    x: -2.5
+    y: 3.5
