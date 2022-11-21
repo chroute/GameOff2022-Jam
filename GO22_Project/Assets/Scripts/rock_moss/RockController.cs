@@ -17,13 +17,13 @@ namespace GO22
             jump = new Vector2(0.0f, 2.0f);
         }
 
-        private void OnCollisionStay2D(Collision2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
             isGrounded = true;
         }
 
         private void OnDisable() {
-            CamFollow camFollow = Camera.main.GetComponent<CamFollow>();
+            CamFollow camFollow = Camera.main?.GetComponent<CamFollow>();
             camFollow?.unFollow();
         }
 

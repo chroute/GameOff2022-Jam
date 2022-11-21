@@ -49,7 +49,8 @@ namespace GO22
 
         public void Win()
         {
-            if (gameResult != GameResult.PRESTINE) {
+            if (gameResult != GameResult.PRESTINE)
+            {
                 return;
             }
 
@@ -61,8 +62,10 @@ namespace GO22
             playerWinEvent?.Invoke(this, EventArgs.Empty);
         }
 
-        public void Lose() {
-            if (gameResult != GameResult.PRESTINE) {
+        public void Lose()
+        {
+            if (gameResult != GameResult.PRESTINE)
+            {
                 return;
             }
 
@@ -120,7 +123,8 @@ namespace GO22
 
         IEnumerator Transition(float startAlpha, float endAlpha)
         {
-            if (transitionTextures.Count == 0) {
+            if (transitionTextures.Count == 0)
+            {
                 yield break;
             }
 
@@ -134,7 +138,7 @@ namespace GO22
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
-                transitionImageMaterial.SetFloat("_Progress", 1);
+            transitionImageMaterial.SetFloat("_Progress", 1);
         }
 
         void UnloadGame()
