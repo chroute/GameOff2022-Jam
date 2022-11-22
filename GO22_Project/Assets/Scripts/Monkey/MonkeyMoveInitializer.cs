@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,13 +20,27 @@ namespace GO22
         
         private int moveCount = 0;
         private List<int> moves = new List<int>();
+        private IEnumerator coroutine;
 
         void Start()
         {
             float? gameDuration = GameManager.Instance?.gameDuration;
             secPerMove = (gameDuration ?? 5) / (3 * numberOfMoves);
             monkeyMovement = GetComponent<MonkeyMovement>();
-            StartCoroutine(StartMoving());
+        }
+
+        void OnEnable() {
+            GameManager.startGameEvent += OnStart;    
+        }
+
+        void OnDisable() {
+            GameManager.startGameEvent -= OnStart;    
+            StopCoroutine(coroutine);
+        }
+
+        void OnStart(object sender, EventArgs eventArgs) {
+            coroutine = StartMoving();
+            StartCoroutine(coroutine);
         }
 
         void NextMove()

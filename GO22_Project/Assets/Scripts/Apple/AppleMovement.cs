@@ -27,18 +27,21 @@ namespace GO22
             body = GetComponent<Rigidbody2D>();
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
+            DisableMove();
         }
 
         void OnEnable()
         {
             GameManager.playerWinEvent += OnWin;
             GameManager.playerLoseEvent += OnLose;
+            GameManager.startGameEvent += OnStart;
         }
 
         void OnDisable()
         {
             GameManager.playerWinEvent -= OnWin;
             GameManager.playerLoseEvent -= OnLose;
+            GameManager.startGameEvent -= OnStart;
         }
 
         void OnMove(InputValue inputValue)
@@ -108,6 +111,15 @@ namespace GO22
         void OnWin(object sender, EventArgs eventArgs)
         {
             DisableMove();
+        }
+
+        void OnStart(object sender, EventArgs eventArgs) {
+            EnableMove();
+        }
+
+        void EnableMove()
+        {
+            playerInput.currentActionMap.Enable();
         }
 
         void DisableMove()
