@@ -41,7 +41,9 @@ namespace GO22
         void OnDisable()
         {
             GameManager.startGameEvent -= OnStart;
-            StopCoroutine(coroutine);
+            if (coroutine != null) {
+                StopCoroutine(coroutine);
+            }
             while (spawnedBirds.Count > 0)
             {
                 Destroy(spawnedBirds.Pop());

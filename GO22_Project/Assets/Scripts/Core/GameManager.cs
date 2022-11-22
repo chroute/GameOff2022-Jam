@@ -24,11 +24,15 @@ namespace GO22
         [SerializeField]
         private float transitionDuration = 2f;
         [SerializeField]
-        private int forceGameIndex = -1;
-        [SerializeField]
         private Image transitionImage;
         [SerializeField]
         private List<Texture> transitionTextures;
+
+        [SerializeField]
+        private int forceGameIndex = -1;
+        [SerializeField]
+        private int initialLife = 4;
+
         private Material transitionImageMaterial;
 
         // Singleton instance of GameManager
@@ -42,8 +46,7 @@ namespace GO22
         private Stack<GameObject> charactersInGame = new Stack<GameObject>();
         private int currentGameIndex = 0;
         private GameResult gameResult = GameResult.PRESTINE;
-        private int score = 0;
-        private int life = 4;
+        private int life;
         private IEnumerator gamePlayCoroutine;
 
 
@@ -59,7 +62,7 @@ namespace GO22
             clicheHead.text = currentGame.ClicheHead;
             clicheTail.text = currentGame.ClicheTail;
             playerWinEvent?.Invoke(this, EventArgs.Empty);
-            score++;
+            ScoreManager.Instance?.IncrementScore();
         }
 
         public void Lose()
@@ -74,8 +77,24 @@ namespace GO22
             clicheTail.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail, "?");
             playerLoseEvent?.Invoke(this, EventArgs.Empty);
             life--;
-            if (life == 0) {
-                // GO to end screen
+
+        }
+
+        public void StartGamePlay()
+        {
+            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 0);
+            life = initialLife;
+            ScoreManager.Instance?.ResetScore();
+            gamePlayCoroutine = GameLoop();
+            StartCoroutine(gamePlayCoroutine);
+        }
+
+        public void StopGamePlay()
+        {
+            transitionImageMaterial?.SetFloat(TRANSITION_PROGRESS, 0);
+            if (gamePlayCoroutine != null)
+            {
+                StopCoroutine(gamePlayCoroutine);
             }
         }
 
@@ -89,22 +108,18 @@ namespace GO22
             else
             {
                 Instance = this;
-                DontDestroyOnLoad(this.gameObject);
             }
-
         }
 
         void Start()
         {
             transitionImageMaterial = transitionImage.material;
-            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 0);
-            gamePlayCoroutine = StartGamePlay();
-            StartCoroutine(gamePlayCoroutine);
+            StartGamePlay();
         }
 
-        private void OnDisable() {
-            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 0);
-            StopCoroutine(gamePlayCoroutine);
+        void OnDisable()
+        {
+            StopGamePlay();
         }
 
         void LoadNextGame()
@@ -123,7 +138,8 @@ namespace GO22
             Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
         }
 
-        void StartNextGame() {
+        void StartNextGame()
+        {
             startGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -166,9 +182,15 @@ namespace GO22
             clicheTail.text = "";
         }
 
-        IEnumerator StartGamePlay()
+        void endGame()
         {
-            while (true)
+            StopGamePlay();
+            SceneManager.Instance?.GoToEnd();
+        }
+
+        IEnumerator GameLoop()
+        {
+            while (life > 0)
             {
                 LoadNextGame();
                 yield return TransitionOut();
@@ -182,6 +204,7 @@ namespace GO22
                 yield return TransitionIn();
                 UnloadGame();
             }
+            endGame();
         }
 
         int chooseNextGameIndex()

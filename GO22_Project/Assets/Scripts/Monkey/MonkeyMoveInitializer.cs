@@ -34,8 +34,10 @@ namespace GO22
         }
 
         void OnDisable() {
-            GameManager.startGameEvent -= OnStart;    
-            StopCoroutine(coroutine);
+            GameManager.startGameEvent -= OnStart;
+            if (coroutine != null) {    
+                StopCoroutine(coroutine);
+            }
         }
 
         void OnStart(object sender, EventArgs eventArgs) {
