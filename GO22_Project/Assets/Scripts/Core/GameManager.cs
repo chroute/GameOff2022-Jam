@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 using System;
@@ -44,10 +45,11 @@ namespace GO22
 
         // Game object instantiated for current game. Need to be destroyed at the end of each game
         private Stack<GameObject> charactersInGame = new Stack<GameObject>();
-        private int currentGameIndex = 0;
+        public int currentGameIndex = -1;
         private GameResult gameResult = GameResult.PRESTINE;
         private int life;
         private IEnumerator gamePlayCoroutine;
+        public List<int> gameIndexToPick;
 
 
         public void Win()
@@ -84,6 +86,8 @@ namespace GO22
         {
             transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 0);
             life = initialLife;
+            currentGameIndex = -1;
+            gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
             ScoreManager.Instance?.ResetScore();
             gamePlayCoroutine = GameLoop();
             StartCoroutine(gamePlayCoroutine);
@@ -92,6 +96,7 @@ namespace GO22
         public void StopGamePlay()
         {
             transitionImageMaterial?.SetFloat(TRANSITION_PROGRESS, 0);
+            gameIndexToPick = null;
             if (gamePlayCoroutine != null)
             {
                 StopCoroutine(gamePlayCoroutine);
@@ -213,7 +218,23 @@ namespace GO22
             {
                 return forceGameIndex;
             }
-            return UnityEngine.Random.Range(0, gameConfigs.Count);
+            if (gameIndexToPick == null || gameIndexToPick.Count == 0)
+            {
+                gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
+            }
+            int nextIndex = chooseNextGameIndexDifferentFromCurrent(10);
+            int nextGameIndex = gameIndexToPick[nextIndex];
+            gameIndexToPick.RemoveAt(nextIndex);
+            return nextGameIndex;
+        }
+
+        int chooseNextGameIndexDifferentFromCurrent(int maxRetry) {
+            int nextIndex;
+            int retryCount = 0;
+            do {
+                nextIndex = UnityEngine.Random.Range(0, gameIndexToPick.Count);
+            } while (gameIndexToPick[nextIndex] == currentGameIndex && retryCount++ < maxRetry);
+            return nextIndex;
         }
     }
 
