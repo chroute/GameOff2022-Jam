@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
@@ -26,12 +27,25 @@ namespace GO22
         void Start()
         {
             coroutine = SpawnBirds();
+        }
+        void OnEnable()
+        {
+            GameManager.startGameEvent += OnStart;
+        }
+
+        void OnStart(object sender, EventArgs eventArgs)
+        {
             StartCoroutine(coroutine);
         }
 
-        void OnDisable() {
-            StopCoroutine(coroutine);
-            while (spawnedBirds.Count > 0) {
+        void OnDisable()
+        {
+            GameManager.startGameEvent -= OnStart;
+            if (coroutine != null) {
+                StopCoroutine(coroutine);
+            }
+            while (spawnedBirds.Count > 0)
+            {
                 Destroy(spawnedBirds.Pop());
             }
         }
@@ -39,9 +53,9 @@ namespace GO22
         void NewBirds()
         {
             GameObject lb = Instantiate(leftBird, new Vector3(leftBirdPos.x, leftBirdPos.y, 0), Quaternion.identity);
-            lb.GetComponent<BirdMovement>().Speed = Random.Range(minBirdSpeed, maxBirdSpeed);
+            lb.GetComponent<BirdMovement>().Speed = UnityEngine.Random.Range(minBirdSpeed, maxBirdSpeed);
             GameObject rb = Instantiate(rightBird, new Vector3(rightBirdPos.x, rightBirdPos.y, 0), Quaternion.identity);
-            rb.GetComponent<BirdMovement>().Speed = -Random.Range(minBirdSpeed, maxBirdSpeed);
+            rb.GetComponent<BirdMovement>().Speed = -UnityEngine.Random.Range(minBirdSpeed, maxBirdSpeed);
             spawnedBirds.Push(lb);
             spawnedBirds.Push(rb);
         }

@@ -19,19 +19,21 @@ namespace GO22
         {
             body = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            shouldMove = true;
+            DisableMove();
         }
 
         void OnEnable()
         {
             GameManager.playerWinEvent += OnWin;
             GameManager.playerLoseEvent += OnLose;
+            GameManager.startGameEvent += OnStart;
         }
 
         void OnDisable()
         {
             GameManager.playerWinEvent -= OnWin;
             GameManager.playerLoseEvent -= OnLose;
+            GameManager.startGameEvent -= OnStart;
         }
 
         void OnCollisionEnter2D(Collision2D other)
@@ -67,7 +69,7 @@ namespace GO22
             }
         }
 
-        void OnLose(object sender, EventArgs eventArgs)
+        void OnLose(int currentLife, int initialLife)
         {
             DisableMove();
 
@@ -78,10 +80,20 @@ namespace GO22
             DisableMove();
         }
 
+        void OnStart(object sender, EventArgs eventArgs)
+        {
+            EnableMove();
+        }
+
         void DisableMove()
         {
             body.velocity = new Vector2(0, 0);
             shouldMove = false;
+        }
+
+        void EnableMove()
+        {
+            shouldMove = true;
         }
     }
 }

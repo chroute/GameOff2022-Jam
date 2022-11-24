@@ -8,27 +8,11 @@ namespace GO22
         private static WordGenerator instance;
         public string CurrentWord { get; private set; }
 
-        public string LoadWord()
-        {
-            CurrentWord = pickWord();
-            return CurrentWord;
-        }
-
-        public void UnLoadWord()
-        {
-            CurrentWord = null;
-        }
-
-        public bool IsWordLoaded() {
-            return CurrentWord != null;
-        }
-
         private WordGenerator()
         {
         }
 
-
-        private string pickWord()
+        public string PickWord()
         {
             return wordList[Random.Range(0, wordList.Length - 1)];
         }
