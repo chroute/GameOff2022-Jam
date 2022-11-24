@@ -40,16 +40,17 @@ namespace GO22
         public static GameManager Instance { get; private set; }
         // Player win event that other classes can subscribe to do something (ex: show happy face) when player wins
         public static event EventHandler playerWinEvent;
-        public static event EventHandler playerLoseEvent;
+        public static event LoseEvent playerLoseEvent;
+        public delegate void LoseEvent(int currentLife, int maxLife);
         public static event EventHandler startGameEvent;
 
         // Game object instantiated for current game. Need to be destroyed at the end of each game
         private Stack<GameObject> charactersInGame = new Stack<GameObject>();
-        public int currentGameIndex = -1;
+        private int currentGameIndex = -1;
         private GameResult gameResult = GameResult.PRESTINE;
         private int life;
         private IEnumerator gamePlayCoroutine;
-        public List<int> gameIndexToPick;
+        private List<int> gameIndexToPick;
 
 
         public void Win()
@@ -77,8 +78,8 @@ namespace GO22
             gameResult = GameResult.LOSE;
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheTail.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail, "?");
-            playerLoseEvent?.Invoke(this, EventArgs.Empty);
             life--;
+            playerLoseEvent?.Invoke(life, initialLife);
 
         }
 

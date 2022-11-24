@@ -12,12 +12,12 @@ namespace GO22
         [SerializeField]
         private GameObject mimickMonkey;
 
-        public  delegate void MovesComplete(List<int> moves);
+        public delegate void MovesComplete(List<int> moves);
         public static event MovesComplete OnMovesComplete;
 
         private MonkeyMovement monkeyMovement;
         private float secPerMove;
-        
+
         private int moveCount = 0;
         private List<int> moves = new List<int>();
         private IEnumerator coroutine;
@@ -29,18 +29,22 @@ namespace GO22
             monkeyMovement = GetComponent<MonkeyMovement>();
         }
 
-        void OnEnable() {
-            GameManager.startGameEvent += OnStart;    
+        void OnEnable()
+        {
+            GameManager.startGameEvent += OnStart;
         }
 
-        void OnDisable() {
+        void OnDisable()
+        {
             GameManager.startGameEvent -= OnStart;
-            if (coroutine != null) {    
+            if (coroutine != null)
+            {
                 StopCoroutine(coroutine);
             }
         }
 
-        void OnStart(object sender, EventArgs eventArgs) {
+        void OnStart(object sender, EventArgs eventArgs)
+        {
             coroutine = StartMoving();
             StartCoroutine(coroutine);
         }
@@ -65,7 +69,8 @@ namespace GO22
                 yield return new WaitForSeconds(secPerMove);
                 monkeyMovement.Idle();
                 yield return new WaitForSeconds(secPerMove / 2);
-                if (moveCount == numberOfMoves) {
+                if (moveCount == numberOfMoves)
+                {
                     OnMovesComplete?.Invoke(moves);
                 }
             }

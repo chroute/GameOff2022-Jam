@@ -69,7 +69,7 @@ namespace GO22
             }
         }
 
-        void OnLose(object sender, EventArgs eventArgs)
+        void OnLose(int currentLife, int initialLife)
         {
             DisableMove();
 
