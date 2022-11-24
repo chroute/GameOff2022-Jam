@@ -1119,8 +1119,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   forceGameIndex: -1
   initialLife: 4
-  currentGameIndex: -1
-  gameIndexToPick: 
 --- !u!4 &1679616487
 Transform:
   m_ObjectHideFlags: 0
