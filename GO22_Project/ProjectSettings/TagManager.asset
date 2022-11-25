@@ -47,3 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Content
+    uniqueID: 3562818003
+    locked: 0
+  - name: Containers
+    uniqueID: 4285285757
+    locked: 0
