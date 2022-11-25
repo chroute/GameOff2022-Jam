@@ -201,12 +201,17 @@ namespace GO22
                 LoadNextGame();
                 yield return TransitionOut();
                 StartNextGame();
-                yield return new WaitForSeconds(gameDuration);
+                float gameTimeLeft = gameConfigs[currentGameIndex].gameDuration;
+                yield return new WaitUntil(() =>
+                {
+                    gameTimeLeft -= Time.deltaTime;
+                    return gameTimeLeft <= 0 || gameResult != GameResult.PRESTINE;
+                });
                 if (gameResult == GameResult.PRESTINE)
                 {
                     Lose();
-                    yield return new WaitForSeconds(gameResultDuration);
                 }
+                yield return new WaitForSeconds(gameResultDuration);
                 yield return TransitionIn();
                 UnloadGame();
             }
@@ -229,10 +234,12 @@ namespace GO22
             return nextGameIndex;
         }
 
-        int chooseNextGameIndexDifferentFromCurrent(int maxRetry) {
+        int chooseNextGameIndexDifferentFromCurrent(int maxRetry)
+        {
             int nextIndex;
             int retryCount = 0;
-            do {
+            do
+            {
                 nextIndex = UnityEngine.Random.Range(0, gameIndexToPick.Count);
             } while (gameIndexToPick[nextIndex] == currentGameIndex && retryCount++ < maxRetry);
             return nextIndex;
