@@ -151,14 +151,14 @@ namespace GO22
 
         IEnumerator TransitionIn()
         {
-            return Transition(1, 0);
+            return Transition(1.5f, 0);
         }
         IEnumerator TransitionOut()
         {
-            return Transition(0, 1);
+            return Transition(0, 1.5f);
         }
 
-        IEnumerator Transition(float startAlpha, float endAlpha)
+        IEnumerator Transition(float start, float end)
         {
             if (transitionTextures.Count == 0)
             {
@@ -170,12 +170,12 @@ namespace GO22
             float timeElapsed = 0;
             while (timeElapsed < transitionDuration)
             {
-                float progress = Mathf.Lerp(startAlpha, endAlpha, timeElapsed / transitionDuration);
+                float progress = Mathf.Lerp(start, end, timeElapsed / transitionDuration);
                 transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, progress);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
-            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 1);
+            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, end);
         }
 
         void UnloadGame()
