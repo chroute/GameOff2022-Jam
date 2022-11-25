@@ -33,6 +33,8 @@ namespace GO22
         private int forceGameIndex = -1;
         [SerializeField]
         private int initialLife = 4;
+        [SerializeField]
+        private float speedIncrement = 0.1f;
 
         private Material transitionImageMaterial;
 
@@ -51,6 +53,7 @@ namespace GO22
         private int life;
         private IEnumerator gamePlayCoroutine;
         private List<int> gameIndexToPick;
+        private int gameRound;
 
 
         public void Win()
@@ -88,6 +91,8 @@ namespace GO22
             transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 0);
             life = initialLife;
             currentGameIndex = -1;
+            gameRound = 0;
+            Time.timeScale = 1;
             gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
             ScoreManager.Instance?.ResetScore();
             gamePlayCoroutine = GameLoop();
@@ -97,6 +102,7 @@ namespace GO22
         public void StopGamePlay()
         {
             transitionImageMaterial?.SetFloat(TRANSITION_PROGRESS, 0);
+            Time.timeScale = 1;
             gameIndexToPick = null;
             if (gamePlayCoroutine != null)
             {
@@ -151,14 +157,14 @@ namespace GO22
 
         IEnumerator TransitionIn()
         {
-            return Transition(1, 0);
+            return Transition(1.5f, 0);
         }
         IEnumerator TransitionOut()
         {
-            return Transition(0, 1);
+            return Transition(0, 1.5f);
         }
 
-        IEnumerator Transition(float startAlpha, float endAlpha)
+        IEnumerator Transition(float start, float end)
         {
             if (transitionTextures.Count == 0)
             {
@@ -170,12 +176,12 @@ namespace GO22
             float timeElapsed = 0;
             while (timeElapsed < transitionDuration)
             {
-                float progress = Mathf.Lerp(startAlpha, endAlpha, timeElapsed / transitionDuration);
+                float progress = Mathf.Lerp(start, end, timeElapsed / transitionDuration);
                 transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, progress);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
-            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 1);
+            transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, end);
         }
 
         void UnloadGame()
@@ -201,12 +207,17 @@ namespace GO22
                 LoadNextGame();
                 yield return TransitionOut();
                 StartNextGame();
-                yield return new WaitForSeconds(gameDuration);
+                float gameTimeLeft = gameConfigs[currentGameIndex].gameDuration;
+                yield return new WaitUntil(() =>
+                {
+                    gameTimeLeft -= Time.deltaTime;
+                    return gameTimeLeft <= 0 || gameResult != GameResult.PRESTINE;
+                });
                 if (gameResult == GameResult.PRESTINE)
                 {
                     Lose();
-                    yield return new WaitForSeconds(gameResultDuration);
                 }
+                yield return new WaitForSeconds(gameResultDuration);
                 yield return TransitionIn();
                 UnloadGame();
             }
@@ -222,6 +233,7 @@ namespace GO22
             if (gameIndexToPick == null || gameIndexToPick.Count == 0)
             {
                 gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
+                Time.timeScale =  1f + speedIncrement * (float) ++gameRound;;
             }
             int nextIndex = chooseNextGameIndexDifferentFromCurrent(10);
             int nextGameIndex = gameIndexToPick[nextIndex];
@@ -229,10 +241,12 @@ namespace GO22
             return nextGameIndex;
         }
 
-        int chooseNextGameIndexDifferentFromCurrent(int maxRetry) {
+        int chooseNextGameIndexDifferentFromCurrent(int maxRetry)
+        {
             int nextIndex;
             int retryCount = 0;
-            do {
+            do
+            {
                 nextIndex = UnityEngine.Random.Range(0, gameIndexToPick.Count);
             } while (gameIndexToPick[nextIndex] == currentGameIndex && retryCount++ < maxRetry);
             return nextIndex;
