@@ -33,6 +33,8 @@ namespace GO22
         private int forceGameIndex = -1;
         [SerializeField]
         private int initialLife = 4;
+        [SerializeField]
+        private float speedIncrement = 0.1f;
 
         private Material transitionImageMaterial;
 
@@ -51,6 +53,7 @@ namespace GO22
         private int life;
         private IEnumerator gamePlayCoroutine;
         private List<int> gameIndexToPick;
+        private int gameRound;
 
 
         public void Win()
@@ -88,6 +91,8 @@ namespace GO22
             transitionImageMaterial.SetFloat(TRANSITION_PROGRESS, 0);
             life = initialLife;
             currentGameIndex = -1;
+            gameRound = 0;
+            Time.timeScale = 1;
             gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
             ScoreManager.Instance?.ResetScore();
             gamePlayCoroutine = GameLoop();
@@ -97,6 +102,7 @@ namespace GO22
         public void StopGamePlay()
         {
             transitionImageMaterial?.SetFloat(TRANSITION_PROGRESS, 0);
+            Time.timeScale = 1;
             gameIndexToPick = null;
             if (gamePlayCoroutine != null)
             {
@@ -227,6 +233,7 @@ namespace GO22
             if (gameIndexToPick == null || gameIndexToPick.Count == 0)
             {
                 gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
+                Time.timeScale =  1f + speedIncrement * (float) ++gameRound;;
             }
             int nextIndex = chooseNextGameIndexDifferentFromCurrent(10);
             int nextGameIndex = gameIndexToPick[nextIndex];
