@@ -1,4 +1,5 @@
 using UnityEngine.Audio;
+using System.Collections;
 using System;
 using UnityEngine;
 
@@ -41,7 +42,21 @@ public class AudioManager : MonoBehaviour
 			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}
+
+		if (s.delayInSeconds > 0)
+		{
+			StartCoroutine(PlaySound(s, s.delayInSeconds));
+		}
+		else
+		{
+			s.source.Play();
+		}
 		
+	}
+
+	private IEnumerator PlaySound(Sound s, float delayInSeconds)
+	{
+		yield return new WaitForSeconds(delayInSeconds);
 		s.source.Play();
 	}
 

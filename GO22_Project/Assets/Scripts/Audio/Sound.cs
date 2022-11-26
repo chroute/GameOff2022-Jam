@@ -20,6 +20,8 @@ public class Sound {
 
 	public bool loop = false;
 
+	public float delayInSeconds = 0f;
+
 	public AudioMixerGroup mixerGroup;
 
 	[HideInInspector]
