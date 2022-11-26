@@ -4,12 +4,20 @@ namespace GO22
 {
     public class CamLimitCoordinate : MonoBehaviour
     {
-        public static CamLimitCoordinate Instance {get; private set;}
+        public static CamLimitCoordinate Instance { get; private set; }
 
-        public float MaxX {get; private set;}
-        public float MinX {get; private set;}
-        public float MaxY {get; private set;}
-        public float MinY {get; private set;}
+        public float MaxX { get; private set; }
+        public float MinX { get; private set; }
+        public float MaxY { get; private set; }
+        public float MinY { get; private set; }
+
+        public bool IsOutOfLimit(Vector2 position)
+        {
+            return position.x < MinX ||
+                position.x > MaxX ||
+                position.y > MaxY ||
+                position.y < MinY;
+        }
 
         void Awake()
         {
