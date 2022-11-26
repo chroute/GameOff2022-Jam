@@ -35,6 +35,8 @@ namespace GO22
         private int initialLife = 4;
         [SerializeField]
         private float speedIncrement = 0.1f;
+        [SerializeField]
+        private ProgressBar progressBar;
 
         private Material transitionImageMaterial;
 
@@ -146,6 +148,7 @@ namespace GO22
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheHead.text = $"{currentGame.ClicheHead}...";
             clicheTail.text = "";
+            progressBar.ResetProgress();
             currentGame.characters.ForEach(go => charactersInGame.Push(
             Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
         }
@@ -207,11 +210,14 @@ namespace GO22
                 LoadNextGame();
                 yield return TransitionOut();
                 StartNextGame();
-                float gameTimeLeft = gameConfigs[currentGameIndex].gameDuration;
+                float gameTimePassed = 0;
+                float gameDuration = gameConfigs[currentGameIndex].gameDuration;
                 yield return new WaitUntil(() =>
                 {
-                    gameTimeLeft -= Time.deltaTime;
-                    return gameTimeLeft <= 0 || gameResult != GameResult.PRESTINE;
+                    gameTimePassed += Time.deltaTime;
+                    progressBar.UpdateProgress(gameTimePassed, gameDuration);
+                    return gameTimePassed >= gameDuration ||
+                        gameResult != GameResult.PRESTINE;
                 });
                 if (gameResult == GameResult.PRESTINE)
                 {
@@ -233,7 +239,7 @@ namespace GO22
             if (gameIndexToPick == null || gameIndexToPick.Count == 0)
             {
                 gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
-                Time.timeScale =  1f + speedIncrement * (float) ++gameRound;;
+                Time.timeScale = 1f + speedIncrement * (float)++gameRound; ;
             }
             int nextIndex = chooseNextGameIndexDifferentFromCurrent(10);
             int nextGameIndex = gameIndexToPick[nextIndex];
