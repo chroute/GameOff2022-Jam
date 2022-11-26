@@ -6,12 +6,10 @@ namespace GO22
     public class HealthBar : MonoBehaviour
     {
 
-        private RectTransform barRectTransform;
         private Image barImage;
 
         void Start()
         {
-            barRectTransform = GetComponent<RectTransform>();
             barImage = GetComponent<Image>();
             barImage.color = Color.green;
         }
