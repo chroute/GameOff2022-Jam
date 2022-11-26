@@ -566,6 +566,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594119965}
   m_CullTransparentMesh: 1
+--- !u!1 &616455356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616455358}
+  - component: {fileID: 616455357}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &616455357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616455356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6247dc16d7f2cde44be7146c7f38a3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: Lose
+    clip: {fileID: 8300000, guid: 00c373486883a61469ebbd42a6d7f9e4, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 3aee7e74aeded754f84fb5413e50316a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VoiceUp
+    clip: {fileID: 8300000, guid: 0085de6d8aa159844858aaa160351efc, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1.5
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VoiceDown
+    clip: {fileID: 8300000, guid: 2270ac8fbea8c794ba7aa24afca3a16e, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1.5
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VoiceRight
+    clip: {fileID: 8300000, guid: 401e4455aea65764b80530660fa71336, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1.5
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VoiceLeft
+    clip: {fileID: 8300000, guid: 7d15e8b71a37a764f99a4ffa2b50fb58, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1.5
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+--- !u!4 &616455358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616455356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740976694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1133,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638046824
 GameObject:
@@ -1209,7 +1309,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 38fa912d5874a7af29f40bbd94b69785, type: 3}
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
-  forceGameIndex: -1
+  forceGameIndex: 1
   initialLife: 10
   speedIncrement: 0.1
   progressBar: {fileID: 1675749011}
@@ -1226,7 +1326,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1761699733
 GameObject:

@@ -66,6 +66,7 @@ namespace GO22
             }
 
             gameResult = GameResult.WIN;
+            FindObjectOfType<AudioManager>().Play("Win");
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheHead.text = currentGame.ClicheHead;
             clicheTail.text = currentGame.ClicheTail;
@@ -81,6 +82,7 @@ namespace GO22
             }
 
             gameResult = GameResult.LOSE;
+            FindObjectOfType<AudioManager>().Play("Lose");
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheTail.text = new Regex("[^\\s]").Replace(currentGame.ClicheTail, "?");
             life--;
