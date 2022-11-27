@@ -234,17 +234,23 @@ namespace GO22
         {
             if (forceGameIndex >= 0)
             {
+                accelerateGame();
                 return forceGameIndex;
             }
             if (gameIndexToPick == null || gameIndexToPick.Count == 0)
             {
                 gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
-                Time.timeScale = 1f + speedIncrement * (float)++gameRound; ;
+                accelerateGame();
             }
             int nextIndex = chooseNextGameIndexDifferentFromCurrent(10);
             int nextGameIndex = gameIndexToPick[nextIndex];
             gameIndexToPick.RemoveAt(nextIndex);
             return nextGameIndex;
+        }
+
+        void accelerateGame()
+        {
+            Time.timeScale = 1f + speedIncrement * (float)++gameRound;
         }
 
         int chooseNextGameIndexDifferentFromCurrent(int maxRetry)

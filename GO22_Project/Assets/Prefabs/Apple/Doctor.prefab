@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 8
+  m_Mass: 7
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1.5
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5a1f3a8eddca91fae746daa9f4a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 50
+  force: 45
 --- !u!95 &715603649101247631
 Animator:
   serializedVersion: 4
