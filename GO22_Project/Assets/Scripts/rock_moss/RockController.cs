@@ -9,6 +9,12 @@ namespace GO22
         public float jumpForce = 2.0f;
         public bool isGrounded;
         Rigidbody2D rb;
+        private AudioManager audioPlayer;
+
+        void Awake()
+        {
+            audioPlayer = FindObjectOfType<AudioManager>();
+        }
 
         void Start()
         {
@@ -29,6 +35,7 @@ namespace GO22
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            audioPlayer.Play("RockHit");
             isGrounded = true;
         }
 

@@ -14,11 +14,14 @@ namespace GO22
         private Rigidbody2D body;
         private Animator animator;
         private bool shouldMove;
+        private AudioManager audioPlayer;
+
 
         void Awake()
         {
             body = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
+            audioPlayer = FindObjectOfType<AudioManager>();
             DisableMove();
         }
 
@@ -72,12 +75,12 @@ namespace GO22
         void OnLose(int currentLife, int initialLife)
         {
             DisableMove();
-
         }
 
         void OnWin(object sender, EventArgs eventArgs)
         {
             DisableMove();
+            audioPlayer.Play("WhihelmScream");
         }
 
         void OnStart(object sender, EventArgs eventArgs)

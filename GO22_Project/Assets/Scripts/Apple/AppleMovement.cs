@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 namespace GO22
 {
@@ -10,6 +11,8 @@ namespace GO22
         private float pushForce = 5;
         [SerializeField]
         private float walkSpeed = 5;
+        [SerializeField]
+        AudioClip[] pushScreamsSound;
 
         private const string IS_MOVING = "isMoving";
         private const string IS_PUSHING = "isPushing";
@@ -21,12 +24,16 @@ namespace GO22
         private PlayerInput playerInput;
         private Animator animator;
         private bool isPushing;
+        private AudioManager audioManager;
+        private AudioSource audioSource;
 
         void Awake()
         {
             body = GetComponent<Rigidbody2D>();
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
+            audioManager = GetComponent<AudioManager>();
+            audioSource = GetComponent<AudioSource>();
             DisableMove();
         }
 
@@ -105,6 +112,7 @@ namespace GO22
         void OnLose(int currentLife, int initialLife)
         {
             DisableMove();
+            audioSource.volume = 0f;
 
         }
 
@@ -128,5 +136,14 @@ namespace GO22
             playerInput.currentActionMap.Disable();
             body.velocity = new Vector2(0, 0);
         }
+
+
+        // sound effects played by the Animator
+        public void PushScreams()
+        {
+            audioSource.clip = pushScreamsSound[UnityEngine.Random.Range(0, pushScreamsSound.Length)];
+            audioSource.Play ();
+        }
+
     }
 }
