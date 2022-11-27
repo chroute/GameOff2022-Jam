@@ -158,5 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 0}
-  jumpForce: 2
+  jumpForce: 2.5
   isGrounded: 1

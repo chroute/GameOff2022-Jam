@@ -6,10 +6,12 @@ namespace GO22
     public class RockController : MonoBehaviour
     {
         public Vector2 jump;
+        [SerializeField]
         public float jumpForce = 2.0f;
         public bool isGrounded;
         Rigidbody2D rb;
         private Animator animator;
+        private float stopDragMassValue = 20f;
 
         void Start()
         {
@@ -34,6 +36,11 @@ namespace GO22
         private void OnCollisionEnter2D(Collision2D other)
         {
             isGrounded = true;
+            if (other.gameObject.name == "obstacles")
+            {
+                stopRockandLose();
+            }
+            return;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -42,15 +49,7 @@ namespace GO22
             {
                 GameManager.Instance?.Win();
             }
-            if (other.gameObject.name == "lose_trigger")
-            {
-                // the animator will trigger the Lose state once its done
-                animator.SetFloat("animSpeed", 1f);
-            }
-            else
-            {
-                return;
-            }
+            return;
         }
 
 
@@ -69,16 +68,15 @@ namespace GO22
 
                 rb.AddForce(jump * jumpForce, ForceMode2D.Impulse);
                 isGrounded = false;
-
                 isStopped();
             }
         }
 
         private void isStopped()
         {
-            if (rb.velocity.x < 0.25f)
+            if (rb.velocity.x < 0.15f & isGrounded == true)
             {
-                GameManager.Instance?.Lose();
+                stopRockandLose();
             }
         }
 
@@ -86,6 +84,15 @@ namespace GO22
         {
             GameManager.Instance?.Lose();
         }
+        private void stopRockandLose()
+        {
+            // make the rock stop
+            rb.drag = stopDragMassValue;
+            rb.mass = stopDragMassValue;
+            // the animator will trigger the Lose state once its done
+            animator.SetFloat("animSpeed", 1f);
+        }
+
 
     }
 }
