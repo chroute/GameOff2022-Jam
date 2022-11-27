@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082f38d510245de9fb2eccf98daa14d9, type: 3}
   m_Name: ReadWord
   m_EditorClassIdentifier: 
-  BackgroundImage: {fileID: 0}
   ClicheHead: Read between
   ClicheTail: the lines
   Instruction: 
@@ -20,3 +19,9 @@ MonoBehaviour:
   - gameObject: {fileID: 5815035597354839798, guid: bc842286ea9d59f14bbc18fd3bcffa82, type: 3}
     x: 0
     y: 0
+    z: 0
+  - gameObject: {fileID: 5889507191689730736, guid: b347370d1e8b3684b858298f8619dd14, type: 3}
+    x: 0
+    y: 0
+    z: 0
+  gameDuration: 5
