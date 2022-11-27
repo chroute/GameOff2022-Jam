@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7fc1e13c3b10dfda8f4d64034fb1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 14
+  pushForce: 16
   walkSpeed: 5
 --- !u!95 &-2978174361240707871
 Animator:
