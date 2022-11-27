@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082f38d510245de9fb2eccf98daa14d9, type: 3}
   m_Name: Rock_moss
   m_EditorClassIdentifier: 
-  BackgroundImage: {fileID: 21300000, guid: d379c832cb2100d4c9484cec3c1630cc, type: 3}
   ClicheHead: A rolling stone
   ClicheTail: gather no moss
   Instruction: 
@@ -20,6 +19,9 @@ MonoBehaviour:
   - gameObject: {fileID: 7738185085333691295, guid: 732473f8086da7f40aea2c6afa4f6966, type: 3}
     x: 0
     y: 0
+    z: 0
   - gameObject: {fileID: 2842556230180685139, guid: 9bb09c43cf7b120438f2868be1b84544, type: 3}
     x: -2.5
     y: 3.5
+    z: 0
+  gameDuration: 15

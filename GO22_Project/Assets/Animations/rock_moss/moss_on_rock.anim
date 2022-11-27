@@ -19,13 +19,15 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 1.3333334
+    - time: 0
+      value: {fileID: -223356379, guid: 371f997cf5274804291618c01e8548c1, type: 3}
+    - time: 0.6
       value: {fileID: 2138281938, guid: 371f997cf5274804291618c01e8548c1, type: 3}
-    - time: 2.6666667
+    - time: 1.0666667
       value: {fileID: -133216082, guid: 371f997cf5274804291618c01e8548c1, type: 3}
-    - time: 4
+    - time: 1.6166667
       value: {fileID: 948084252, guid: 371f997cf5274804291618c01e8548c1, type: 3}
-    - time: 5.016667
+    - time: 2.0166667
       value: {fileID: 948084252, guid: 371f997cf5274804291618c01e8548c1, type: 3}
     attribute: m_Sprite
     path: 
@@ -46,6 +48,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: -223356379, guid: 371f997cf5274804291618c01e8548c1, type: 3}
     - {fileID: 2138281938, guid: 371f997cf5274804291618c01e8548c1, type: 3}
     - {fileID: -133216082, guid: 371f997cf5274804291618c01e8548c1, type: 3}
     - {fileID: 948084252, guid: 371f997cf5274804291618c01e8548c1, type: 3}
@@ -55,7 +58,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 5.033334
+    m_StopTime: 2.0333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -74,4 +77,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 2.0166667
+    functionName: mossAnimationAndLose
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

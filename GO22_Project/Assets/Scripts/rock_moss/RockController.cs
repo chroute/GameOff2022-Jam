@@ -9,6 +9,7 @@ namespace GO22
         public float jumpForce = 2.0f;
         public bool isGrounded;
         Rigidbody2D rb;
+        private Animator animator;
 
         void Start()
         {
@@ -17,13 +18,16 @@ namespace GO22
             rb = GetComponent<Rigidbody2D>();
             rb.isKinematic = true;
             jump = new Vector2(0.0f, 2.0f);
+            animator = GetComponent<Animator>();
         }
 
-        void OnEnable() {
-            GameManager.startGameEvent += OnStart;    
+        void OnEnable()
+        {
+            GameManager.startGameEvent += OnStart;
         }
 
-        void OnStart(object sender, EventArgs eventArgs) {
+        void OnStart(object sender, EventArgs eventArgs)
+        {
             rb.isKinematic = false;
         }
 
@@ -32,10 +36,30 @@ namespace GO22
             isGrounded = true;
         }
 
-        private void OnDisable() {
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.name == "win_trigger")
+            {
+                GameManager.Instance?.Win();
+            }
+            if (other.gameObject.name == "lose_trigger")
+            {
+                // the animator will trigger the Lose state once its done
+                animator.SetFloat("animSpeed", 1f);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+
+
+        private void OnDisable()
+        {
             CamFollow camFollow = Camera.main?.GetComponent<CamFollow>();
             camFollow?.unFollow();
-            GameManager.startGameEvent -= OnStart;    
+            GameManager.startGameEvent -= OnStart;
         }
 
         void Update()
@@ -52,10 +76,16 @@ namespace GO22
 
         private void isStopped()
         {
-            if (rb.velocity.y < 1f)
+            if (rb.velocity.x < 0.25f)
             {
                 GameManager.Instance?.Lose();
             }
         }
+
+        private void mossAnimationAndLose()
+        {
+            GameManager.Instance?.Lose();
+        }
+
     }
 }
