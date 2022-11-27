@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,12 +12,18 @@ namespace GO22
         [SerializeField]
         private int targetLemon = 5;
         private int lemonCaught = 0;
+        [SerializeField]
+        private float pitchIncrease = 1.25f;
+        [SerializeField]
+        private float blendSoundDuration = 0.1f;
 
         private Rigidbody2D body;
         private JuiceFiller bottleFiller;
         private Animator animator;
         private Vector2 input;
         private bool blenderBroken;
+        private AudioSource blenderNoise;
+        private IEnumerator blenderNoiseCoroutine;
 
         void Start()
         {
@@ -25,6 +32,7 @@ namespace GO22
             body = GetComponent<Rigidbody2D>();
             bottleFiller = GetComponentInChildren<JuiceFiller>();
             animator = GetComponentInChildren<Animator>();
+            blenderNoise = GetComponent<AudioSource>();
         }
 
         void FixedUpdate()
@@ -55,6 +63,8 @@ namespace GO22
             if (other.gameObject.CompareTag(LEMON))
             {
                 Destroy(other.gameObject);
+                blenderNoiseCoroutine = ChangePitch();
+                StartCoroutine(blenderNoiseCoroutine);
                 lemonCaught++;
                 bottleFiller?.FillBottle(targetLemon, lemonCaught);
                 if (lemonCaught == targetLemon)
@@ -67,8 +77,25 @@ namespace GO22
                 // TODO: make blender trip over
                 blenderBroken = true;
                 animator.enabled = false;
+                blenderNoise.Stop();
+                AudioManager.Instance?.Play("RockHit");
                 GameManager.Instance?.Lose();
             }
         }
+
+        private void OnDisable() {
+            if (blenderNoiseCoroutine != null) {
+                StopCoroutine(blenderNoiseCoroutine);
+            }
+        }
+
+        private IEnumerator ChangePitch()
+        {
+            blenderNoise.pitch = pitchIncrease;
+            yield return new WaitForSeconds(blendSoundDuration);
+            blenderNoise.pitch = 1f;
+
+        }
+
     }
 }

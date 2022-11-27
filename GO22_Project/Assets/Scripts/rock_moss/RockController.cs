@@ -29,6 +29,7 @@ namespace GO22
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            AudioManager.Instance?.Play("RockHit");
             isGrounded = true;
         }
 

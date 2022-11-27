@@ -18,6 +18,7 @@ namespace GO22
 
         void Awake() {
             image = GetComponent<SpriteRenderer>();
+
         }
 
         public void Idle() {
@@ -28,15 +29,19 @@ namespace GO22
             switch (moveIndex) {
                 case 0:
                     image.sprite = left;
+                    AudioManager.Instance?.Play("VoiceLeft");
                     break;
                 case 1:
                     image.sprite = up;
+                    AudioManager.Instance?.Play("VoiceUp");
                     break;
                 case 2:
                     image.sprite = right;
+                    AudioManager.Instance?.Play("VoiceRight");
                     break;
                 case 3:
                     image.sprite = down;
+                    AudioManager.Instance?.Play("VoiceDown");
                     break;
             }
         }
