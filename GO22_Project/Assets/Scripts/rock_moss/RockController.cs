@@ -5,6 +5,7 @@ namespace GO22
 {
     public class RockController : MonoBehaviour
     {
+        private const float stopVelocityThreshold = 0.15f;
         public Vector2 jump;
         [SerializeField]
         public float jumpForce = 2.0f;
@@ -40,7 +41,6 @@ namespace GO22
             {
                 stopRockandLose();
             }
-            return;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -49,7 +49,6 @@ namespace GO22
             {
                 GameManager.Instance?.Win();
             }
-            return;
         }
 
 
@@ -74,7 +73,7 @@ namespace GO22
 
         private void isStopped()
         {
-            if (rb.velocity.x < 0.15f & isGrounded == true)
+            if (rb.velocity.x < stopVelocityThreshold & isGrounded == true)
             {
                 stopRockandLose();
             }
