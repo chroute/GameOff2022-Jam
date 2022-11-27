@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
 
 namespace GO22
 {
@@ -24,7 +23,6 @@ namespace GO22
         private PlayerInput playerInput;
         private Animator animator;
         private bool isPushing;
-        private AudioManager audioManager;
         private AudioSource audioSource;
 
         void Awake()
@@ -32,7 +30,6 @@ namespace GO22
             body = GetComponent<Rigidbody2D>();
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
-            audioManager = GetComponent<AudioManager>();
             audioSource = GetComponent<AudioSource>();
             DisableMove();
         }

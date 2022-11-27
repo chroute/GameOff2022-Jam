@@ -8,7 +8,6 @@ namespace GO22
         private Rigidbody2D rb;
         private Collider2D col;
         private Animator animator;
-        private AudioManager audioPlayer;
         private SpriteRenderer spriteRenderer;
 
 
@@ -17,7 +16,6 @@ namespace GO22
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<Collider2D>();
             animator = GetComponent<Animator>();
-            audioPlayer = FindObjectOfType<AudioManager>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
@@ -40,8 +38,8 @@ namespace GO22
             col.enabled = false;
             animator.enabled = false;
             spriteRenderer.flipY = true;
-            audioPlayer.Play("Hit");
-            audioPlayer.Play("Falling");
+            AudioManager.Instance?.Play("Hit");
+            AudioManager.Instance?.Play("Falling");
 
         }
     }

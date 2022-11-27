@@ -15,11 +15,9 @@ namespace GO22
         [SerializeField]
         private Sprite down;
         private SpriteRenderer image;
-        private AudioManager audioPlayer;
 
         void Awake() {
             image = GetComponent<SpriteRenderer>();
-            audioPlayer = FindObjectOfType<AudioManager>();
 
         }
 
@@ -31,19 +29,19 @@ namespace GO22
             switch (moveIndex) {
                 case 0:
                     image.sprite = left;
-                    audioPlayer.Play("VoiceLeft");
+                    AudioManager.Instance?.Play("VoiceLeft");
                     break;
                 case 1:
                     image.sprite = up;
-                    audioPlayer.Play("VoiceUp");
+                    AudioManager.Instance?.Play("VoiceUp");
                     break;
                 case 2:
                     image.sprite = right;
-                    audioPlayer.Play("VoiceRight");
+                    AudioManager.Instance?.Play("VoiceRight");
                     break;
                 case 3:
                     image.sprite = down;
-                    audioPlayer.Play("VoiceDown");
+                    AudioManager.Instance?.Play("VoiceDown");
                     break;
             }
         }

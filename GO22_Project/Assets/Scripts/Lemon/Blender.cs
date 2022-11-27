@@ -22,9 +22,8 @@ namespace GO22
         private Animator animator;
         private Vector2 input;
         private bool blenderBroken;
-        private AudioSource audioSource;
-        private AudioManager audioPlayer; // for minor, instantiated sound effects
-
+        private AudioSource blenderNoise;
+        private IEnumerator blenderNoiseCoroutine;
 
         void Start()
         {
@@ -33,8 +32,7 @@ namespace GO22
             body = GetComponent<Rigidbody2D>();
             bottleFiller = GetComponentInChildren<JuiceFiller>();
             animator = GetComponentInChildren<Animator>();
-            audioSource = GetComponent<AudioSource>();
-            audioPlayer = FindObjectOfType<AudioManager>();
+            blenderNoise = GetComponent<AudioSource>();
         }
 
         void FixedUpdate()
@@ -65,7 +63,8 @@ namespace GO22
             if (other.gameObject.CompareTag(LEMON))
             {
                 Destroy(other.gameObject);
-                StartCoroutine(ChangePitch());
+                blenderNoiseCoroutine = ChangePitch();
+                StartCoroutine(blenderNoiseCoroutine);
                 lemonCaught++;
                 bottleFiller?.FillBottle(targetLemon, lemonCaught);
                 if (lemonCaught == targetLemon)
@@ -78,17 +77,23 @@ namespace GO22
                 // TODO: make blender trip over
                 blenderBroken = true;
                 animator.enabled = false;
-                audioSource.Stop();
-                audioPlayer.Play("RockHit");
+                blenderNoise.Stop();
+                AudioManager.Instance?.Play("RockHit");
                 GameManager.Instance?.Lose();
+            }
+        }
+
+        private void OnDisable() {
+            if (blenderNoiseCoroutine != null) {
+                StopCoroutine(blenderNoiseCoroutine);
             }
         }
 
         private IEnumerator ChangePitch()
         {
-            audioSource.pitch = pitchIncrease;
+            blenderNoise.pitch = pitchIncrease;
             yield return new WaitForSeconds(blendSoundDuration);
-            audioSource.pitch = 1f;
+            blenderNoise.pitch = 1f;
 
         }
 

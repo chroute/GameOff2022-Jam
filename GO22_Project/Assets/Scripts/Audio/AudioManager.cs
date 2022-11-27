@@ -1,42 +1,39 @@
 using UnityEngine.Audio;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
 
-	public static AudioManager instance;
-
-	public AudioMixerGroup mixerGroup;
+	public static AudioManager Instance;
 
 	public Sound[] sounds;
+	private Dictionary<string, Sound> soundDict = new Dictionary<string, Sound>();
 
 	void Awake()
 	{
-		if (instance != null)
+		if (Instance != null)
 		{
 			Destroy(gameObject);
 		}
 		else
 		{
-			instance = this;
+			Instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
 
 		foreach (Sound s in sounds)
 		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-			s.source.loop = s.loop;
-
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.InitializeAudioSoure(gameObject.AddComponent<AudioSource>());
+			soundDict.Add(s.name, s);
 		}
 	}
 
 	public void Play(string sound)
 	{
-		Sound s = Array.Find(sounds, item => item.name == sound);
+		Sound s = soundDict[sound];
 		if (s == null)
 		{
 			Debug.LogWarning("Sound: " + name + " not found!");

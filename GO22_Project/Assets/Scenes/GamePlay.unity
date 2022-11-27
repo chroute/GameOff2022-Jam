@@ -595,7 +595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6247dc16d7f2cde44be7146c7f38a3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
   sounds:
   - name: Lose
     clip: {fileID: 8300000, guid: 00c373486883a61469ebbd42a6d7f9e4, type: 3}
@@ -1355,7 +1354,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 38fa912d5874a7af29f40bbd94b69785, type: 3}
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
-  forceGameIndex: 4
+  forceGameIndex: -1
   initialLife: 10
   speedIncrement: 0.1
   progressBar: {fileID: 1675749011}

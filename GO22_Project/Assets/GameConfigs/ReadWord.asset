@@ -20,8 +20,4 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  - gameObject: {fileID: 5889507191689730736, guid: b347370d1e8b3684b858298f8619dd14, type: 3}
-    x: 0
-    y: 0
-    z: 0
   gameDuration: 5

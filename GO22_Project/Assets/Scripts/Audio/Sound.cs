@@ -10,21 +10,22 @@ public class Sound {
 
 	[Range(0f, 1f)]
 	public float volume = .75f;
-	[Range(0f, 1f)]
-	public float volumeVariance = .1f;
 
 	[Range(.1f, 3f)]
 	public float pitch = 1f;
-	[Range(0f, 1f)]
-	public float pitchVariance = .1f;
 
 	public bool loop = false;
 
 	public float delayInSeconds = 0f;
 
-	public AudioMixerGroup mixerGroup;
-
 	[HideInInspector]
 	public AudioSource source;
 
+	public void InitializeAudioSoure(AudioSource audioSource) {
+		source = audioSource;
+		source.clip = clip;
+		source.volume = volume;
+		source.loop = loop;
+		source.pitch = pitch;
+	}
 }
