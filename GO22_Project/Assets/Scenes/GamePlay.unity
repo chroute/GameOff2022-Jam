@@ -1326,7 +1326,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
   forceGameIndex: -1
-  initialLife: 10
+  initialLife: 2
   speedIncrement: 0.1
   progressBar: {fileID: 1675749011}
 --- !u!4 &1679616487
