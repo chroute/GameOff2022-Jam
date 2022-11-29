@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5296267525669998665}
   - component: {fileID: 2402411711970518858}
   - component: {fileID: 5132509934094131804}
-  - component: {fileID: 9223217647790295794}
+  - component: {fileID: -7185465682052347049}
   m_Layer: 0
   m_Name: Background_Monkey
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: {x: 1, y: 1}
---- !u!82 &9223217647790295794
+--- !u!82 &-7185465682052347049
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7f951b26e4726384eb08fccfc1bcae1a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
