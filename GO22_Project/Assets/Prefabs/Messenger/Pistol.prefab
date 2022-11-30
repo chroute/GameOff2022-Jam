@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3074443125558556913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.65, z: 1}
   m_LocalScale: {x: 0.8869179, y: 0.39041057, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4897,8 +4897,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3074443125897625862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -4, z: 0}
-  m_LocalScale: {x: 1.1275, y: 2.721494, z: 1}
+  m_LocalPosition: {x: -3, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3074443125558556914}
@@ -4946,7 +4946,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d5cfac8653c2e34688f9aa7f4c364a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4982,8 +4982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a26bbec9494b738912d4c10d0ce362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bandit: {fileID: 1774284153, guid: 001709464c347304fa2a428dbcebe240, type: 3}
-  messenger: {fileID: 365179583, guid: 29c6cb35613025740a2f5d2cbe648e4b, type: 3}
+  bandit: {fileID: 21300000, guid: f2035f41bafaea44fbe7113b6ad52d32, type: 3}
+  messenger: {fileID: 21300000, guid: 686be543dac63d54d86289e85b105932, type: 3}
   card: {fileID: 2620179819343533971, guid: 0f40d403a89d798899ab6fb42359d606, type: 3}
   numberOfCards: 3
   xIncrement: 3
