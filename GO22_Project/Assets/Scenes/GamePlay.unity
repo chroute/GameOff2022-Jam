@@ -673,6 +673,13 @@ MonoBehaviour:
     loop: 0
     delayInSeconds: 0
     source: {fileID: 0}
+  - name: GunShoot
+    clip: {fileID: 8300000, guid: d22cdcd09a221914f85cefd523c04db6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    delayInSeconds: 0
+    source: {fileID: 0}
 --- !u!4 &616455358
 Transform:
   m_ObjectHideFlags: 0
@@ -1333,7 +1340,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 38fa912d5874a7af29f40bbd94b69785, type: 3}
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
-  forceGameIndex: 7
+  forceGameIndex: -1
   initialLife: 2
   speedIncrement: 0.1
   progressBar: {fileID: 1675749011}

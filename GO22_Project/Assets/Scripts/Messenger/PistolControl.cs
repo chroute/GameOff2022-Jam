@@ -51,6 +51,8 @@ namespace GO22
         {
             ps.Play();
             gameControl.FireAtPosition(pos);
+            AudioManager.Instance?.Play("GunShoot");
+
         }
     }
 }

@@ -675,7 +675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: V1 2022 - Chroute / (Yaya)
+  m_text: V 1.0 - Chroute / Chourouge 2022
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75688acaf3ae10f4f9358ff8629ad940, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 9d18548d02bb36a45a66d4143f539144, type: 2}
