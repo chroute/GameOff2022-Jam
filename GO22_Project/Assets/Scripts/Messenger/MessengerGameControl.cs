@@ -21,6 +21,7 @@ namespace GO22
 
         private int messengerIndex;
         private HashSet<int> banditLeft = new HashSet<int>();
+        private bool messengerShot;
         private List<GameObject> createdCards = new List<GameObject>();
 
         void Start()
@@ -55,7 +56,7 @@ namespace GO22
 
         public void FireAtPosition(int pos)
         {
-            if (banditLeft.Count == 0)
+            if (banditLeft.Count == 0 || messengerShot)
             {
                 return;
             }
@@ -68,6 +69,7 @@ namespace GO22
 
             if (index == messengerIndex)
             {
+                messengerShot = true;
                 cardTurn.ShowCard(() => cardTurn.TiltCard());
                 GameManager.Instance?.Lose();
                 return;
