@@ -12,6 +12,7 @@ namespace GO22
         public string Instruction;
         // List of game object that each game needs (ex: player, enemy, target)
         public List<GameObjectWithPosition> characters;
+        public GameObjectWithPosition background;
         public float gameDuration = 5;
     }
 
