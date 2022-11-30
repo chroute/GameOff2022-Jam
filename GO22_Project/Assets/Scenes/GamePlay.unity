@@ -838,7 +838,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75688acaf3ae10f4f9358ff8629ad940, type: 2}
-  m_sharedMaterial: {fileID: -389802420182396933, guid: 75688acaf3ae10f4f9358ff8629ad940, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 6dbb3edb251cda64baa96a71001d7602, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
   forceGameIndex: -1
-  initialLife: 10
+  initialLife: 2
   speedIncrement: 0.1
   progressBar: {fileID: 1675749011}
 --- !u!4 &1679616487
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75688acaf3ae10f4f9358ff8629ad940, type: 2}
-  m_sharedMaterial: {fileID: -389802420182396933, guid: 75688acaf3ae10f4f9358ff8629ad940, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 6dbb3edb251cda64baa96a71001d7602, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
