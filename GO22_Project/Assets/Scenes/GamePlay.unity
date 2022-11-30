@@ -666,6 +666,13 @@ MonoBehaviour:
     loop: 0
     delayInSeconds: 0
     source: {fileID: 0}
+  - name: EatFly
+    clip: {fileID: 8300000, guid: 6c525a553798c374d875599b2285e606, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    delayInSeconds: 0
+    source: {fileID: 0}
 --- !u!4 &616455358
 Transform:
   m_ObjectHideFlags: 0

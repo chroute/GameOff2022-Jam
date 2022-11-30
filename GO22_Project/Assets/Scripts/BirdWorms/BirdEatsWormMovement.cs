@@ -55,6 +55,7 @@ namespace GO22
 
         private void OnTriggerEnter2D(Collider2D other) {
             Destroy(other.gameObject);
+            AudioManager.Instance?.Play("EatFly");
             if (++wormsCaught >= targetWormsNumber) {
                 GameManager.Instance?.Win();
             }

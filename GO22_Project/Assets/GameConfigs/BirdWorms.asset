@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BirdWorms
   m_EditorClassIdentifier: 
   ClicheHead: The early bird
-  ClicheTail: catches the worm
+  ClicheTail: catches the worm (or the flies)
   Instruction: 
   characters:
   - gameObject: {fileID: 5003419462065709860, guid: dbc013f285057e331bf5a69e9678b7e2, type: 3}
@@ -24,4 +24,8 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  gameDuration: 5
+  - gameObject: {fileID: 6103707328892475603, guid: 18abaab856e638b43b0b810df05c9aa4, type: 3}
+    x: 0
+    y: 0
+    z: 0
+  gameDuration: 8
