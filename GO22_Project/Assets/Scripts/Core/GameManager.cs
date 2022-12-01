@@ -113,7 +113,6 @@ namespace GO22
 
         public void StopGamePlay()
         {
-            ResetGame();
             Time.timeScale = 1;
             gameIndexToPick = null;
             if (gamePlayCoroutine != null)
