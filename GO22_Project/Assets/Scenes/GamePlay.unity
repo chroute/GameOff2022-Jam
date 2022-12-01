@@ -683,14 +683,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Beep
     clip: {fileID: 8300000, guid: 64048f2c39c704e4d90afd0a226868d3, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     delayInSeconds: 0
     source: {fileID: 0}
   - name: BeepEnd
     clip: {fileID: 8300000, guid: 64048f2c39c704e4d90afd0a226868d3, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1.5
     loop: 0
     delayInSeconds: 0
