@@ -680,6 +680,20 @@ MonoBehaviour:
     loop: 0
     delayInSeconds: 0
     source: {fileID: 0}
+  - name: Beep
+    clip: {fileID: 8300000, guid: 64048f2c39c704e4d90afd0a226868d3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    delayInSeconds: 0
+    source: {fileID: 0}
+  - name: BeepEnd
+    clip: {fileID: 8300000, guid: ab7b6a864985952489284a81cf04b96a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    delayInSeconds: 0
+    source: {fileID: 0}
 --- !u!4 &616455358
 Transform:
   m_ObjectHideFlags: 0
@@ -1544,7 +1558,6 @@ MonoBehaviour:
   transitionDuration: 2
   countDownDuration: 1
   transitionImage: {fileID: 740976697}
-  countDownImage: {fileID: 819513413}
   transitionTextures:
   - {fileID: 2800000, guid: 3b2136b52a591fe23a994d64baae060d, type: 3}
   - {fileID: 2800000, guid: 2afc9a3d61bdf3b8b9c9da40b010a26c, type: 3}
@@ -1555,6 +1568,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 38fa912d5874a7af29f40bbd94b69785, type: 3}
   - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
+  countDownImage: {fileID: 819513413}
   forceGameIndex: -1
   initialLife: 5
   speedIncrement: 0.1

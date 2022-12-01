@@ -199,12 +199,16 @@ namespace GO22
             countDownImage.enabled = true;
             TMP_Text countDown = countDownImage.GetComponentInChildren<TMP_Text>();
             countDown.text = "3";
+            AudioManager.Instance?.Play("Beep");
             yield return Transition(countDownImageMaterial, 0f, 1.5f, countDownDuration);
             countDown.text = "2";
+            AudioManager.Instance?.Play("Beep");
             yield return Transition(countDownImageMaterial, 0f, 1.5f, countDownDuration);
             countDown.text = "1";
+            AudioManager.Instance?.Play("Beep");
             yield return Transition(countDownImageMaterial, 0f, 1.5f, countDownDuration);
             countDown.text = "";
+            AudioManager.Instance?.Play("BeepEnd");
             countDownImage.enabled = false;
         }
 
