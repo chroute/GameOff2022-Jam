@@ -36,6 +36,8 @@ namespace GO22
         [SerializeField]
         private float speedIncrement = 0.1f;
         [SerializeField]
+        private float pitchIncrement = 0.1f;
+        [SerializeField]
         private ProgressBar progressBar;
 
         private Material transitionImageMaterial;
@@ -151,8 +153,27 @@ namespace GO22
             clicheHead.text = $"{currentGame.ClicheHead}...";
             clicheTail.text = "";
             progressBar.ResetProgress();
-            currentGame.characters.ForEach(go => charactersInGame.Push(
-            Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
+            currentGame.characters.ForEach(go => charactersInGame.Push(Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
+            GameObject background = InitializeBackgroundWithPitch(currentGame.background);
+            if (background != null)
+            {
+                charactersInGame.Push(background);
+            }
+        }
+
+        GameObject InitializeBackgroundWithPitch(GameObjectWithPosition background)
+        {
+            GameObject createdObject = null;
+            if (background != null && background.gameObject != null)
+            {
+                createdObject = Instantiate(background.gameObject, new Vector3(background.x, background.y, background.z), Quaternion.identity);
+                AudioSource audioSource = createdObject.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.pitch += pitchIncrement * gameRound;
+                }
+            }
+            return createdObject;
         }
 
         void StartNextGame()

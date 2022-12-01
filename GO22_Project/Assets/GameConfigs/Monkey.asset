@@ -24,7 +24,8 @@ MonoBehaviour:
     x: 2
     y: -1
     z: 0
-  - gameObject: {fileID: 5211779167390481549, guid: df157dfd20f4603459ec35823e349e18, type: 3}
+  background:
+    gameObject: {fileID: 5211779167390481549, guid: df157dfd20f4603459ec35823e349e18, type: 3}
     x: 0
     y: 0
     z: 5

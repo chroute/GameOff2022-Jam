@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   ClicheHead: An apple a day
-  ClicheTail: keep the doctor away
+  ClicheTail: keeps the doctor away
   Instruction: 
   characters:
   - gameObject: {fileID: 4789459737976461947, guid: 70fb21077e46053989cf784ff368eb6e, type: 3}
@@ -28,7 +28,9 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  - gameObject: {fileID: 3716667094353177101, guid: 4f30f60098772f941abd3a7d060dc800, type: 3}
+  background:
+    gameObject: {fileID: 3716667094353177101, guid: 4f30f60098772f941abd3a7d060dc800, type: 3}
     x: 0
     y: 0
     z: 5
+  gameDuration: 5
