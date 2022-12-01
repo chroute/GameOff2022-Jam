@@ -1415,6 +1415,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a0dc98f83f7def0eb826ca17c1a0314, type: 2}
   - {fileID: 11400000, guid: 2383bf4831d3205bfa4b010511cbee27, type: 2}
   - {fileID: 11400000, guid: 4dd6dabba2cd12263a2378b44e9ed254, type: 2}
+  instruction: {fileID: 1549118027}
   clicheHead: {fileID: 1761699735}
   clicheTail: {fileID: 829429670}
   gameResultDuration: 0.5

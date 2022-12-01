@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: Don't shoot
   ClicheTail: the messenger
-  Instruction: 
+  Instruction: {fileID: 21300000, guid: ac7705b9138af9f41822a086d71e2dba, type: 3}
   characters:
-  - gameObject: {fileID: 2675883568690706286, guid: 4a0032529e3c8954398481ba51cbe46f, type: 3}
-    x: 0
-    y: 0
-    z: 5
   - gameObject: {fileID: 3074443125897625862, guid: 8e0a371a09b66b1edb81ccc45f7b00d8, type: 3}
     x: 0
     y: -4
     z: 0
+  background:
+    gameObject: {fileID: 2675883568690706286, guid: 4a0032529e3c8954398481ba51cbe46f, type: 3}
+    x: 0
+    y: 0
+    z: 5
   gameDuration: 5

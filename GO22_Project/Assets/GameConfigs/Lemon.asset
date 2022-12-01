@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: When life gives you lemons
   ClicheTail: make lemonade
-  Instruction: 
+  Instruction: {fileID: 21300000, guid: eaa56468c8b924d48935ce8d28b3a411, type: 3}
   characters:
   - gameObject: {fileID: 2178371410542339292, guid: b8418fb6271449c4e8258c6b4694a8c5, type: 3}
     x: 0

@@ -17,6 +17,8 @@ namespace GO22
         [SerializeField]
         private List<GameConfig> gameConfigs;
         [SerializeField]
+        private Image instruction;
+        [SerializeField]
         private TMP_Text clicheHead;
         [SerializeField]
         private TMP_Text clicheTail;
@@ -101,6 +103,8 @@ namespace GO22
             Time.timeScale = 1;
             gameIndexToPick = Enumerable.Range(0, gameConfigs.Count).ToList();
             ScoreManager.Instance?.ResetScore();
+            instruction.sprite = null;
+            instruction.color = Color.black;
             gamePlayCoroutine = GameLoop();
             StartCoroutine(gamePlayCoroutine);
         }
@@ -152,6 +156,8 @@ namespace GO22
             GameConfig currentGame = gameConfigs[currentGameIndex];
             clicheHead.text = $"{currentGame.ClicheHead}...";
             clicheTail.text = "";
+            instruction.sprite = currentGame.Instruction;
+            instruction.color = Color.white;
             progressBar.ResetProgress();
             currentGame.characters.ForEach(go => charactersInGame.Push(Instantiate(go.gameObject, new Vector3(go.x, go.y, go.z), Quaternion.identity)));
             GameObject background = InitializeBackgroundWithPitch(currentGame.background);
@@ -218,6 +224,8 @@ namespace GO22
             }
             clicheHead.text = "";
             clicheTail.text = "";
+            instruction.sprite = null;
+            instruction.color = Color.black;
         }
 
         void endGame()
