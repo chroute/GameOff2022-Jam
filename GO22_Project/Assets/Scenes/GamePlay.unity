@@ -689,9 +689,9 @@ MonoBehaviour:
     delayInSeconds: 0
     source: {fileID: 0}
   - name: BeepEnd
-    clip: {fileID: 8300000, guid: ab7b6a864985952489284a81cf04b96a, type: 3}
+    clip: {fileID: 8300000, guid: 64048f2c39c704e4d90afd0a226868d3, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 1.5
     loop: 0
     delayInSeconds: 0
     source: {fileID: 0}
@@ -1428,7 +1428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 21.62, y: -10.8}
+  m_AnchoredPosition: {x: 21.620003, y: -10.8}
   m_SizeDelta: {x: 24, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549118026
