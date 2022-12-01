@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: Monkey see
   ClicheTail: monkey do
-  Instruction: 
+  Instruction: {fileID: 21300000, guid: eaa56468c8b924d48935ce8d28b3a411, type: 3}
   characters:
   - gameObject: {fileID: 2716055591007323610, guid: 9d45f4d8645737aa7a411b63c8a0ab33, type: 3}
     x: -2

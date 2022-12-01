@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: Read between
   ClicheTail: the lines
-  Instruction: 
+  Instruction: {fileID: 1161601728, guid: 8510f8e8b62a413479722e4f1c2481b3, type: 3}
   characters:
   - gameObject: {fileID: 5815035597354839798, guid: bc842286ea9d59f14bbc18fd3bcffa82, type: 3}
     x: 0

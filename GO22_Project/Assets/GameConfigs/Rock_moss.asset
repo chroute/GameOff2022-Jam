@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: A rolling stone
   ClicheTail: gathers no moss
-  Instruction: 
+  Instruction: {fileID: 21300000, guid: 7c51913fc86df3a41b729ae0b9bb875a, type: 3}
   characters:
   - gameObject: {fileID: 7738185085333691295, guid: 732473f8086da7f40aea2c6afa4f6966, type: 3}
     x: 0

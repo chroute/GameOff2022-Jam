@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: Kill two birds with
   ClicheTail: one stone
-  Instruction: 
+  Instruction: {fileID: 21300000, guid: ac7705b9138af9f41822a086d71e2dba, type: 3}
   characters:
   - gameObject: {fileID: 2097462713350167152, guid: 75b1e08c641ffa3ee8880c974d9f53bf, type: 3}
     x: 0

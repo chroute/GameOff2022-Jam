@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClicheHead: The early bird
   ClicheTail: catches the worm (or the flies)
-  Instruction: 
+  Instruction: {fileID: 21300000, guid: eaa56468c8b924d48935ce8d28b3a411, type: 3}
   characters:
   - gameObject: {fileID: 5003419462065709860, guid: dbc013f285057e331bf5a69e9678b7e2, type: 3}
     x: -4
