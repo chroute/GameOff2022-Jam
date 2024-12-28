@@ -4982,8 +4982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a26bbec9494b738912d4c10d0ce362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bandit: {fileID: 21300000, guid: f2035f41bafaea44fbe7113b6ad52d32, type: 3}
-  messenger: {fileID: 21300000, guid: 686be543dac63d54d86289e85b105932, type: 3}
+  bandit: {fileID: 21300000, guid: 37ba82114be01284eafa865e799369b7, type: 3}
+  messenger: {fileID: 21300000, guid: 605fe0cb9e7f87942807085e17527f55, type: 3}
   card: {fileID: 2620179819343533971, guid: 0f40d403a89d798899ab6fb42359d606, type: 3}
   numberOfCards: 3
   xIncrement: 3
