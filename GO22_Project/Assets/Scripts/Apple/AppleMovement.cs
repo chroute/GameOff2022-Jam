@@ -12,6 +12,8 @@ namespace GO22
         private float walkSpeed = 5;
         [SerializeField]
         AudioClip[] pushScreamsSound;
+        [SerializeField] 
+        private GameObject arrowKey;
 
         private const string IS_MOVING = "isMoving";
         private const string IS_PUSHING = "isPushing";
@@ -24,6 +26,7 @@ namespace GO22
         private Animator animator;
         private bool isPushing;
         private AudioSource audioSource;
+        
 
         void Awake()
         {
@@ -85,6 +88,7 @@ namespace GO22
                     other.gameObject.transform.position.x - transform.position.x), 1);
                 animator.SetBool(IS_PUSHING, true);
                 isPushing = true;
+                arrowKey.SetActive(true);
             }
         }
 
@@ -94,6 +98,7 @@ namespace GO22
             {
                 animator.SetBool(IS_PUSHING, false);
                 isPushing = false;
+                arrowKey.SetActive(false);
             }
         }
 
