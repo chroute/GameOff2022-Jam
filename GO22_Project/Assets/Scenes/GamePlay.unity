@@ -1664,14 +1664,11 @@ MonoBehaviour:
   countDownDuration: 1
   transitionImage: {fileID: 740976697}
   transitionTextures:
-  - {fileID: 2800000, guid: 3b2136b52a591fe23a994d64baae060d, type: 3}
   - {fileID: 2800000, guid: 2afc9a3d61bdf3b8b9c9da40b010a26c, type: 3}
   - {fileID: 2800000, guid: 12ea7359108ce8e21a3440dad5037cbf, type: 3}
   - {fileID: 2800000, guid: e9c85d393c74b21348dd4d3d72046340, type: 3}
   - {fileID: 2800000, guid: 34d88bb38a0c6c059890d8527e24c039, type: 3}
   - {fileID: 2800000, guid: 057112c6cf9548a04acdc074895b6e6b, type: 3}
-  - {fileID: 2800000, guid: 38fa912d5874a7af29f40bbd94b69785, type: 3}
-  - {fileID: 2800000, guid: 272b30748739d6f689f8af63d298a45a, type: 3}
   - {fileID: 2800000, guid: aa384cc8fcb2ec4b4babc21646228506, type: 3}
   countDownImage: {fileID: 819513413}
   forceGameIndex: -1

@@ -22,11 +22,11 @@ namespace GO22
         {
             fire = false;
             int move = 0;
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 move = -1;
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.RightArrow)  || Input.GetKeyDown(KeyCode.D))
             {
                 move = 1;
             }
