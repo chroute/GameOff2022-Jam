@@ -4,7 +4,7 @@ namespace GO22
 {
     public class WordGenerator
     {
-        private static string[] wordList = new string[] { "Dog", "Cow", "Cat", "Horse", "Donkey", "Tiger", "Lion", "Panther", "Leopard", "Bear", "Elephant", "Crocodile", "Ostrich", "Chimpanzee", "Giraffe", "Chameleon", "Hippopotamus","Jellyfish","Flamingo","Rhinoceros", "Whale", "Turtle", "Porcupine" };
+        private static string[] wordList = new string[] { "Dog", "Cow", "Cat", "Horse", "Donkey", "Tiger", "Lion", "Panther", "Leopard", "Bear", "Elephant", "Crocodile", "Ostrich", "Chimpanzee", "Giraffe", "Chameleon","Jellyfish","Flamingo", "Whale", "Turtle" };
         private static WordGenerator instance;
         public string CurrentWord { get; private set; }
 

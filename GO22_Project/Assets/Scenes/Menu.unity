@@ -675,7 +675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: V 1.0 - Chroute / Chourouge 2022
+  m_text: V 1.1 - Chroute / Chourouge 2022
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75688acaf3ae10f4f9358ff8629ad940, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 9d18548d02bb36a45a66d4143f539144, type: 2}
@@ -766,8 +766,8 @@ AudioSource:
   m_GameObject: {fileID: 1837342014}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ca95b7989aaebc343aef796f59d94803, type: 3}
+  OutputAudioMixerGroup: {fileID: -1777966201060494769, guid: d10d6b02801a76a459c31c140a5658bf, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7f951b26e4726384eb08fccfc1bcae1a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.75
   m_Pitch: 1
@@ -1025,6 +1025,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1201806535833533072, guid: cdad23189d1522e4c9e3de3c1b0cd96d, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1201806535833533073, guid: cdad23189d1522e4c9e3de3c1b0cd96d, type: 3}
       propertyPath: m_Name
       value: Sign
@@ -1171,9 +1175,25 @@ PrefabInstance:
       value: PlayButton
       objectReference: {fileID: 0}
     - target: {fileID: 4312137080453955935, guid: a8ad812abfc103c45b3a3cede174479a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312137080453955935, guid: a8ad812abfc103c45b3a3cede174479a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312137080453955935, guid: a8ad812abfc103c45b3a3cede174479a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 106239417}
+    - target: {fileID: 4312137080453955935, guid: a8ad812abfc103c45b3a3cede174479a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312137080453955935, guid: a8ad812abfc103c45b3a3cede174479a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GO22.ButtonController, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8ad812abfc103c45b3a3cede174479a, type: 3}
 --- !u!1001 &9185543356849853846

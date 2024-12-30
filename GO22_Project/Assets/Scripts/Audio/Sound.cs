@@ -5,8 +5,8 @@ using UnityEngine;
 public class Sound {
 
 	public string name;
-
 	public AudioClip clip;
+	public AudioMixerGroup mixer;
 
 	[Range(0f, 1f)]
 	public float volume = .75f;
@@ -18,6 +18,7 @@ public class Sound {
 
 	public float delayInSeconds = 0f;
 
+
 	[HideInInspector]
 	public AudioSource source;
 
@@ -27,5 +28,6 @@ public class Sound {
 		source.volume = volume;
 		source.loop = loop;
 		source.pitch = pitch;
+		source.outputAudioMixerGroup = mixer;
 	}
 }

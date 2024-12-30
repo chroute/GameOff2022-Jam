@@ -17,6 +17,7 @@ namespace GO22
         private void Start()
         {
             cardFaceSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+            cardFaceSprite.flipX = true;
             cardBackSprite = GetComponent<SpriteRenderer>();
             ShowBack();
         }
@@ -44,6 +45,7 @@ namespace GO22
         public void TiltCard()
         {
             Vector3 eulerAngles = transform.rotation.eulerAngles;
+            cardFaceSprite.flipX = false;
             transform.rotation = Quaternion.Euler(eulerAngles.x, eulerAngles.x, eulerAngles.z + tiltDegree);
         }
 
